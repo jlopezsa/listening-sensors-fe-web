@@ -20,5 +20,37 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/jsx-filename-extension": [
+          1,
+          {
+            "extensions": [
+              ".js",
+              ".jsx"
+            ]
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "react/react-in-jsx-scope": "off",
+        "object-curly-newline": [
+          "error",
+          {
+            "ObjectExpression": {
+              "consistent": true,
+              "multiline": true
+            },
+            "ObjectPattern": {
+              "consistent": true,
+              "multiline": true
+            },
+            "ImportDeclaration": {
+              "consistent": true,
+              "multiline": true
+            },
+            "ExportDeclaration": {
+              "multiline": true,
+              "minProperties": 3
+            }
+          }
+        ]
     }
 }
