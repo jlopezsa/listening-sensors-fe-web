@@ -1,10 +1,13 @@
+import { BrowserRouter } from 'react-router-dom';
+import MainRouter from './routes/MainRouter';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello Listening sensors!</h1>
-    </div>
+    <BrowserRouter>
+      {/* <NavBar /> */}
+      <MainRouter />
+    </BrowserRouter>
   );
 }
 
