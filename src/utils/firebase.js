@@ -6,8 +6,8 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyB-zVIq-CflSxXW9E50HhQtLKgheCAyO60',
-  authDomain: 'listeningsensors.firebaseapp.com',
+  apiKey: process.env.REACT_APP_KEY_FIREBASE,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: 'https://listeningsensors.firebaseio.com',
   projectId: 'listeningsensors',
   storageBucket: 'listeningsensors.appspot.com',

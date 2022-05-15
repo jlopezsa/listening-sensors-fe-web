@@ -23,17 +23,17 @@ function HomePage() {
       <h3>
         x:
         {' '}
-        { accelDataX }
+        {accelDataX}
       </h3>
       <h3>
         y:
         {' '}
-        { accelDataY }
+        {accelDataY}
       </h3>
       <h3>
         z:
         {' '}
-        { accelDataZ }
+        {accelDataZ}
       </h3>
     </div>
 
