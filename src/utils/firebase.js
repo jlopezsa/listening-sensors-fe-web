@@ -8,7 +8,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 const firebaseConfig = {
   apiKey: 'AIzaSyB-zVIq-CflSxXW9E50HhQtLKgheCAyO60',
   authDomain: 'listeningsensors.firebaseapp.com',
-  databaseURL: 'https://listeningsensors-default-rtdb.firebaseio.com',
+  databaseURL: 'https://listeningsensors.firebaseio.com',
   projectId: 'listeningsensors',
   storageBucket: 'listeningsensors.appspot.com',
   messagingSenderId: '634491630956',
@@ -28,6 +28,7 @@ function getAccelerometerData() {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     accelerometerData = data;
+    // console.log('IN-FIREBASE: ', data);
     // updateStarCount(postElement, data);
   });
   return accelerometerData;
@@ -36,5 +37,6 @@ function getAccelerometerData() {
 export {
   app,
   analytics,
+  dbRT,
   getAccelerometerData,
 };

@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { getAccelerometerData } from '../utils/firebase';
+import { ref, onValue } from 'firebase/database';
+import { dbRT } from '../utils/firebase';
 
 function HomePage() {
-  const [accelData, setAccelData] = useState(0);
+  const [accelDataX, setAccelDataX] = useState(0);
+  const [accelDataY, setAccelDataY] = useState(0);
+  const [accelDataZ, setAccelDataZ] = useState(0);
+  const starCountRef = ref(dbRT, 'accelerometer/');
+
   useEffect(() => {
-    const accelerometerData = getAccelerometerData();
-    console.log('FROM DATA BASE RT:  ', JSON.stringify(accelerometerData));
-    console.log('FROM DATAASE RT:  ', accelerometerData.x);
-    setAccelData(accelerometerData.x);
-  }, [accelData]);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      setAccelDataX(data.x);
+      setAccelDataY(data.y);
+      setAccelDataZ(data.z);
+    });
+  });
 
   return (
     <div>
       <h1>HomePage</h1>
-      <h3>{accelData}</h3>
+      <h3>
+        x:
+        {' '}
+        { accelDataX }
+      </h3>
+      <h3>
+        y:
+        {' '}
+        { accelDataY }
+      </h3>
+      <h3>
+        z:
+        {' '}
+        { accelDataZ }
+      </h3>
     </div>
 
   );
