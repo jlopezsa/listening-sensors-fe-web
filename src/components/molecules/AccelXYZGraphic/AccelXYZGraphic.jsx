@@ -45,10 +45,11 @@ export const options = {
   },
 };
 
-const labels = [0, 5];
+const labels = [0, 1];
 
-function AccelerometerXYZGraphic(props) {
-  const { accelDataX, accelDataY, accelDataZ } = props;
+function AccelXYZGraphic(props) {
+  const { xyzValues } = props;
+  const { accelDataX, accelDataY, accelDataZ } = xyzValues;
   const data = {
     labels,
     datasets: [
@@ -95,10 +96,12 @@ function AccelerometerXYZGraphic(props) {
   );
 }
 
-AccelerometerXYZGraphic.propTypes = {
-  accelDataX: PropTypes.number,
-  accelDataY: PropTypes.number,
-  accelDataZ: PropTypes.number,
+AccelXYZGraphic.propTypes = {
+  xyzValues: PropTypes.shape({
+    accelDataX: PropTypes.number,
+    accelDataY: PropTypes.number,
+    accelDataZ: PropTypes.number,
+  }).isRequired,
 };
 
-export default AccelerometerXYZGraphic;
+export default AccelXYZGraphic;

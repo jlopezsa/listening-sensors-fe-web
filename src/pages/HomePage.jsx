@@ -1,8 +1,7 @@
-/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { dbRT } from '../utils/firebase';
-import AccelerometerXYZGraphic from '../components/molecules/AccelerometerXYZGraphic/AccelerometerXYZGraphic';
+import AccelXYZGraphic from '../components/molecules/AccelXYZGraphic/AccelXYZGraphic';
 
 function HomePage() {
   const [accelDataX, setAccelDataX] = useState(0);
@@ -22,7 +21,7 @@ function HomePage() {
   return (
     <div>
       <h1>HomePage</h1>
-      <AccelerometerXYZGraphic xyzValues = {accelDataX, accelDataY, accelDataZ} />
+      <AccelXYZGraphic xyzValues={{ accelDataX, accelDataY, accelDataZ }} />
     </div>
 
   );
