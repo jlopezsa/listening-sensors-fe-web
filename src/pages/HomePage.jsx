@@ -1,40 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { dbRT } from '../utils/firebase';
+import XYZgraphic from '../components/molecules/XYZgraphic/XYZgraphic';
 
 function HomePage() {
-  const [accelDataX, setAccelDataX] = useState(0);
-  const [accelDataY, setAccelDataY] = useState(0);
-  const [accelDataZ, setAccelDataZ] = useState(0);
+  const [accelData, setAccelData] = useState({
+    dataX: 0,
+    dataY: 0,
+    dataZ: 0,
+  });
+
   const starCountRef = ref(dbRT, 'accelerometer/');
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      setAccelDataX(data.x);
-      setAccelDataY(data.y);
-      setAccelDataZ(data.z);
+      setAccelData((accelDataSatate) => ({
+        ...accelDataSatate,
+        dataX: data.x,
+        dataY: data.y,
+        dataZ: data.z,
+      }));
     });
-  });
+  }, [accelData.dataX, accelData.dataY, accelData.dataZ]);
 
   return (
     <div>
       <h1>HomePage</h1>
-      <h3>
-        x:
-        {' '}
-        {accelDataX}
-      </h3>
-      <h3>
-        y:
-        {' '}
-        {accelDataY}
-      </h3>
-      <h3>
-        z:
-        {' '}
-        {accelDataZ}
-      </h3>
+      <XYZgraphic xyzValues={accelData} />
     </div>
 
   );
