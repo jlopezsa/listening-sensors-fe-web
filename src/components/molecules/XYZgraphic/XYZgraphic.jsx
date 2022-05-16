@@ -47,27 +47,29 @@ export const options = {
 
 const labels = [0, 1];
 
-function AccelXYZGraphic(props) {
+function XYZgraphic(props) {
   const { xyzValues } = props;
-  const { accelDataX, accelDataY, accelDataZ } = xyzValues;
+  const { dataX, dataY, dataZ } = xyzValues;
+  // console.log('XYZVALUES: ', xyzValues);
+  // console.log('DATA-X: ', dataX);
   const data = {
     labels,
     datasets: [
       {
         label: 'x',
-        data: [accelDataX, accelDataX],
+        data: [dataX, dataX],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'y',
-        data: [accelDataY, accelDataY],
+        data: [dataY, dataY],
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
       {
         label: 'z',
-        data: [accelDataZ, accelDataZ],
+        data: [dataZ, dataZ],
         borderColor: 'rgb(53, 162, 2)',
         backgroundColor: 'rgba(53, 162, 235, 0.1)',
       },
@@ -78,17 +80,17 @@ function AccelXYZGraphic(props) {
       <h3>
         x:
         {' '}
-        {accelDataX}
+        {dataX}
       </h3>
       <h3>
         y:
         {' '}
-        {accelDataY}
+        {dataY}
       </h3>
       <h3>
         z:
         {' '}
-        {accelDataZ}
+        {dataZ}
       </h3>
       <Line options={options} data={data} />
     </div>
@@ -96,12 +98,12 @@ function AccelXYZGraphic(props) {
   );
 }
 
-AccelXYZGraphic.propTypes = {
+XYZgraphic.propTypes = {
   xyzValues: PropTypes.shape({
-    accelDataX: PropTypes.number,
-    accelDataY: PropTypes.number,
-    accelDataZ: PropTypes.number,
+    dataX: PropTypes.number,
+    dataY: PropTypes.number,
+    dataZ: PropTypes.number,
   }).isRequired,
 };
 
-export default AccelXYZGraphic;
+export default XYZgraphic;
