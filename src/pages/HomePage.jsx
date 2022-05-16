@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { dbRT } from '../utils/firebase';
+import { Header } from '../components/atomns/Header';
+import LogoSensor from '../components/atomns/LogoSensor';
 import XYZgraphic from '../components/molecules/XYZgraphic/XYZgraphic';
+import Menu from '../components/atomns/Menu/Menu';
 
 function HomePage() {
   const [accelData, setAccelData] = useState({
@@ -26,7 +29,10 @@ function HomePage() {
 
   return (
     <div>
-      <h1>HomePage</h1>
+      <Header className="header_area">
+        <LogoSensor />
+        <Menu />
+      </Header>
       <XYZgraphic xyzValues={accelData} />
     </div>
 
