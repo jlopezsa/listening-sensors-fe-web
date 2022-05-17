@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { dbRT } from '../utils/firebase';
-import HeaderComponent from '../components/molecules/HeaderComponent';
 import dataFig from '../components/atomns/DataFigures';
 
 import XYZgraphic from '../components/molecules/XYZgraphic/XYZgraphic';
@@ -30,7 +29,6 @@ function HomePage() {
 
   return (
     <div>
-      <HeaderComponent />
       <SlidesImage items={dataFig} />
       <XYZgraphic xyzValues={accelData} />
     </div>
