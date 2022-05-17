@@ -22,7 +22,7 @@ ChartJS.register(
   Legend,
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -39,8 +39,8 @@ export const options = {
       max: 1,
     },
     yAxis: {
-      min: -2,
-      max: 2,
+      min: -1.5,
+      max: 1.5,
     },
   },
 };
@@ -50,8 +50,6 @@ const labels = [0, 1];
 function XYZgraphic(props) {
   const { xyzValues } = props;
   const { dataX, dataY, dataZ } = xyzValues;
-  // console.log('XYZVALUES: ', xyzValues);
-  // console.log('DATA-X: ', dataX);
   const data = {
     labels,
     datasets: [
@@ -92,7 +90,9 @@ function XYZgraphic(props) {
         {' '}
         {dataZ}
       </h3>
-      <Line options={options} data={data} />
+      <div>
+        <Line options={options} data={data} />
+      </div>
     </div>
 
   );
