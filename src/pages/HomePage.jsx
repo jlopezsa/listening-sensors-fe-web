@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { dbRT } from '../utils/firebase';
+import dataFig from '../components/atomns/DataFigures';
+
 import XYZgraphic from '../components/molecules/XYZgraphic/XYZgraphic';
+import SlidesImage from '../components/molecules/SlidesImage';
 
 function HomePage() {
   const [accelData, setAccelData] = useState({
@@ -26,7 +29,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1>HomePage</h1>
+      <SlidesImage items={dataFig} />
       <XYZgraphic xyzValues={accelData} />
     </div>
 
