@@ -63,7 +63,7 @@ function XYZgraphicHistory(props) {
     historyX.push(dataX);
     historyY.push(dataY);
     historyZ.push(dataZ);
-    labels.push(xyzValues.createTime.nanoseconds);
+    labels.push(xyzValues.createTime.seconds / 1000000);
   })
 
   const data = {
