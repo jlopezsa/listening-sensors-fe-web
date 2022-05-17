@@ -1,7 +1,8 @@
+/* eslint-disable */
+// https://nazifbara.com/blog/how-to-make-a-slideshow-gallery-with-reactjs-and-styled-components
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../css/globalStyles';
-
-import figuras1 from '../../figures/iot_figure_1.jpg';
 
 const SlideWrapper = styled.div`
 background-color: red;
@@ -44,19 +45,32 @@ const NavButton = styled.button`
     `}
 `;
 
-function SlidesImage() {
+function SlidesImage(props) {
+  const [{ items, activeIndex }, setState] = useState({
+    items: props.items,
+    activeIndex: 0
+  });
+
+  const moveTo = (newIndex) => () => {
+    if (newIndex === -1) {
+      setState((s) => ({ ...s, activeIndex: items.length - 1 }));
+      return;
+    }
+    if (newIndex === items.length) {
+      setState((s) => ({ ...s, activeIndex: 0 }));
+      return;
+    }
+    setState((s) => ({ ...s, activeIndex: newIndex }));
+  };
+
   return (
     <SlideWrapper>
       <ImageBox>
-        <img alt="" src={figuras1} />
-        <NavButton position="left" />
-        <NavButton position="right" />
+        <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
+        <NavButton position="left" onClick={moveTo(activeIndex - 1)}/>
+        <NavButton position="right" onClick={moveTo(activeIndex + 1)}/>
       </ImageBox>
     </SlideWrapper>
-    // <BigImage figuras={figuras1}>
-    //   <BigImageBlur>
-    //   </BigImageBlur>
-    // </BigImage>
   );
 }
 
