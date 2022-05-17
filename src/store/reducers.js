@@ -26,9 +26,9 @@ function reducer(state = initialState, action) {
         ...state,
         dataAccelerometer: {
           createTime: action.payload.createTime,
-          dataX: action.payload.dataX,
-          dataY: action.payload.dataY,
-          dataZ: action.payload.dataZ,
+          dataX: action.payload.x,
+          dataY: action.payload.y,
+          dataZ: action.payload.z,
         },
       };
     case SAVE_DATA_GYROS_SENSOR:
@@ -36,9 +36,9 @@ function reducer(state = initialState, action) {
         ...state,
         dataGyroscope: {
           createTime: action.payload.createTime,
-          dataX: action.payload.dataX,
-          dataY: action.payload.dataY,
-          dataZ: action.payload.dataZ,
+          dataX: action.payload.x,
+          dataY: action.payload.y,
+          dataZ: action.payload.z,
         },
       };
     default:

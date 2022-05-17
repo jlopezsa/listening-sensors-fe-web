@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import {
   Chart as ChartJS,
@@ -47,8 +47,8 @@ const options = {
 
 const labels = [0, 1];
 
-function XYZgraphic(props) {
-  const { xyzValues } = props;
+function XYZgraphic() {
+  const xyzValues = useSelector((state) => state.dataAccelerometer);
   const { dataX, dataY, dataZ } = xyzValues;
   const data = {
     labels,
@@ -97,13 +97,5 @@ function XYZgraphic(props) {
 
   );
 }
-
-XYZgraphic.propTypes = {
-  xyzValues: PropTypes.shape({
-    dataX: PropTypes.number,
-    dataY: PropTypes.number,
-    dataZ: PropTypes.number,
-  }).isRequired,
-};
 
 export default XYZgraphic;
