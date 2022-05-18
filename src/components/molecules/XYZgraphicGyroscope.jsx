@@ -31,13 +31,13 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Accelerometer',
+      text: 'Gyroscope',
     },
   },
   scales: {
     yAxis: {
-      min: -2,
-      max: 2,
+      min: -5,
+      max: 5,
     },
   },
 };
@@ -45,8 +45,8 @@ const options = {
 const labels = [0.000, 1.001];
 // const labels = labelsInt.toFixed(2);
 
-function XYZgraphic() {
-  const xyzValues = useSelector((state) => (state.dataAccelerometer));
+function XYZgraphicGyroscope() {
+  const xyzValues = useSelector((state) => (state.dataGyroscope));
   const { dataX, dataY, dataZ } = xyzValues;
   const data = {
     labels,
@@ -78,4 +78,4 @@ function XYZgraphic() {
   );
 }
 
-export default XYZgraphic;
+export default XYZgraphicGyroscope;

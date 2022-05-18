@@ -31,13 +31,13 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Accelerometer',
+      text: 'Gyroscope',
     },
   },
   scales: {
     yAxis: {
-      min: -2,
-      max: 2,
+      min: -5,
+      max: 5,
     },
   },
 };
@@ -47,8 +47,8 @@ const historyY = [];
 const historyZ = [];
 const labels = [];
 
-function XYZgraphicHistory() {
-  const xyzValues = useSelector((state) => (state.dataAccelerometer));
+function XYZgraphicHistoryGyroscope() {
+  const xyzValues = useSelector((state) => (state.dataGyroscope));
   const { dataX, dataY, dataZ } = xyzValues;
   useEffect(() => {
     if (historyX.length >= 100) {
@@ -63,9 +63,7 @@ function XYZgraphicHistory() {
     const tiempo = new Date(xyzValues.createTime.seconds * 1000);
     const millisec = xyzValues.createTime.nanoseconds / 1000;
     const timeSeconds = tiempo.getSeconds() + (millisec / 1000000);
-    // labels.push(xyzValues.createTime.seconds);
     labels.push(timeSeconds.toFixed(2));
-    // console.log('TIME(s): ', `${tiempo.getSeconds() + (millisec / 1000000)}`);
   });
 
   const data = {
@@ -140,4 +138,4 @@ function XYZgraphicHistory() {
   );
 }
 
-export default XYZgraphicHistory;
+export default XYZgraphicHistoryGyroscope;

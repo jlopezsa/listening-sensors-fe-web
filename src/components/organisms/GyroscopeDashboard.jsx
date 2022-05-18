@@ -3,9 +3,9 @@ import { ref, onValue } from 'firebase/database';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { dbRT } from '../../utils/firebase';
-import { saveDataAccel } from '../../store/actions';
-import XYZgraphic from '../molecules/XYZgraphic';
-import XYZgraphicHistory from '../molecules/XYZgraphicHistory';
+import { saveDataGyros } from '../../store/actions';
+import XYZgraphicGyroscope from '../molecules/XYZgraphicGyroscope';
+import XYZgraphicHistoryGyroscope from '../molecules/XYZgraphicHistoryGyroscope';
 
 const ContainerGraph = styled.div`
 display: flex;
@@ -22,25 +22,25 @@ align-items: center;
 }
 `;
 
-function AccelerometerDashboard() {
+function GyroscopeDashboard() {
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'accelerometer/');
+  const starCountRef = ref(dbRT, 'gyroscope/');
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      dispatch(saveDataAccel(data));
+      dispatch(saveDataGyros(data));
     });
   });
   return (
     <div>
-      <h1>Acelerometro</h1>
+      <h1>Giroscópio</h1>
       <ContainerGraph>
-        <XYZgraphicHistory />
-        <XYZgraphic />
+        <XYZgraphicHistoryGyroscope />
+        <XYZgraphicGyroscope />
       </ContainerGraph>
     </div>
   );
 }
 
-export default AccelerometerDashboard;
+export default GyroscopeDashboard;

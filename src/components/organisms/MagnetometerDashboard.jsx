@@ -3,9 +3,9 @@ import { ref, onValue } from 'firebase/database';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { dbRT } from '../../utils/firebase';
-import { saveDataAccel } from '../../store/actions';
-import XYZgraphic from '../molecules/XYZgraphic';
-import XYZgraphicHistory from '../molecules/XYZgraphicHistory';
+import { saveDataMagne } from '../../store/actions';
+import XYZgraphicMagnetometer from '../molecules/XYZgraphicMagnetometer';
+import XYZgraphicHistoryMagnetometer from '../molecules/XYZgraphicHistoryMagnetometer';
 
 const ContainerGraph = styled.div`
 display: flex;
@@ -22,25 +22,25 @@ align-items: center;
 }
 `;
 
-function AccelerometerDashboard() {
+function MagnetometerDashboard() {
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'accelerometer/');
+  const starCountRef = ref(dbRT, 'magnetometer/');
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      dispatch(saveDataAccel(data));
+      dispatch(saveDataMagne(data));
     });
   });
   return (
     <div>
-      <h1>Acelerometro</h1>
+      <h1>Magnetometro</h1>
       <ContainerGraph>
-        <XYZgraphicHistory />
-        <XYZgraphic />
+        <XYZgraphicHistoryMagnetometer />
+        <XYZgraphicMagnetometer />
       </ContainerGraph>
     </div>
   );
 }
 
-export default AccelerometerDashboard;
+export default MagnetometerDashboard;
