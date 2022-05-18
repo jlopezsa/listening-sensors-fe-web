@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {
   Chart as ChartJS,
@@ -10,7 +11,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+// import { Line } from 'react-chartjs-2';
+import { LineGraphic, ContainerLine } from '../atomns/LineGraphic';
 
 ChartJS.register(
   CategoryScale,
@@ -34,21 +36,20 @@ const options = {
     },
   },
   scales: {
-    xAxis: {
-      min: 0,
-      max: 1,
-    },
     yAxis: {
-      min: -1.5,
-      max: 1.5,
+      min: -2,
+      max: 2,
     },
   },
 };
 
-const labels = [0, 1];
+const labels = [0.000, 1.001];
+// const labels = labelsInt.toFixed(2);
 
-function XYZgraphic() {
-  const xyzValues = useSelector((state) => state.dataAccelerometer);
+function XYZgraphic(props) {
+  const { sensor } = props;
+  const xyzValues = useSelector((state) => (
+    sensor === 1 ? state.dataAccelerometer : state.dataGyroscope));
   const { dataX, dataY, dataZ } = xyzValues;
   const data = {
     labels,
@@ -74,28 +75,14 @@ function XYZgraphic() {
     ],
   };
   return (
-    <div>
-      <h3>
-        x:
-        {' '}
-        {dataX}
-      </h3>
-      <h3>
-        y:
-        {' '}
-        {dataY}
-      </h3>
-      <h3>
-        z:
-        {' '}
-        {dataZ}
-      </h3>
-      <div>
-        <Line options={options} data={data} />
-      </div>
-    </div>
-
+    <ContainerLine>
+      <LineGraphic options={options} data={data} />
+    </ContainerLine>
   );
 }
+
+XYZgraphic.propTypes = {
+  sensor: PropTypes.number.isRequired,
+};
 
 export default XYZgraphic;

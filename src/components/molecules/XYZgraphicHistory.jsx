@@ -9,9 +9,10 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+// import { Line } from 'react-chartjs-2';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { LineGraphic, ContainerLine } from '../atomns/LineGraphic';
 
 ChartJS.register(
   CategoryScale,
@@ -62,7 +63,12 @@ function XYZgraphicHistory(props) {
     historyX.push(dataX);
     historyY.push(dataY);
     historyZ.push(dataZ);
-    labels.push(xyzValues.createTime.seconds / 1000000);
+    const tiempo = new Date(xyzValues.createTime.seconds * 1000);
+    const millisec = xyzValues.createTime.nanoseconds / 1000;
+    const timeSeconds = tiempo.getSeconds() + (millisec / 1000000);
+    // labels.push(xyzValues.createTime.seconds);
+    labels.push(timeSeconds.toFixed(2));
+    // console.log('TIME(s): ', `${tiempo.getSeconds() + (millisec / 1000000)}`);
   });
 
   const data = {
@@ -130,11 +136,9 @@ function XYZgraphicHistory(props) {
   };
 
   return (
-    <div>
-      <div>
-        <Line options={options} data={data} />
-      </div>
-    </div>
+    <ContainerLine>
+      <LineGraphic options={options} data={data} />
+    </ContainerLine>
 
   );
 }
