@@ -1,28 +1,15 @@
-import React, { useEffect } from 'react';
-import { ref, onValue } from 'firebase/database';
-import { useDispatch } from 'react-redux';
-import { dbRT } from '../utils/firebase';
-import { saveDataAccel } from '../store/actions';
-
-import XYZgraphic from '../components/molecules/XYZgraphic';
-import XYZgraphicHistory from '../components/molecules/XYZgraphicHistory';
+import React from 'react';
+import GyroscopeDashboard from '../components/organisms/GyroscopeDashboard';
+import AccelerometerDashboard from '../components/organisms/AccelerometerDashboard';
+import MagnetometerDashboard from '../components/organisms/MagnetometerDashboard';
 
 function DashboardPage() {
-  const dispatch = useDispatch();
-
-  const starCountRef = ref(dbRT, 'accelerometer/');
-
-  useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      dispatch(saveDataAccel(data));
-    });
-  });
   return (
     <div>
       DashboardPage
-      <XYZgraphicHistory sensor={1} />
-      <XYZgraphic />
+      <AccelerometerDashboard />
+      <GyroscopeDashboard />
+      <MagnetometerDashboard />
     </div>
   );
 }
