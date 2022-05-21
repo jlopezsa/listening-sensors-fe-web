@@ -24,7 +24,7 @@ align-items: center;
 
 function MagnetometerDashboard() {
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'magnetometer/');
+  const starCountRef = ref(dbRT, 'sensorSet_A1/magnetometer');
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
