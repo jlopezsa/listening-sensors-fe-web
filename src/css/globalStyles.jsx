@@ -6,6 +6,7 @@ export const colors = {
   mainTextHover: 'rgb(255, 152, 0)',
   backgroundDark: '#888888',
   backgroundLight: 'white',
+  backgroundOrange: 'rgb(255, 152, 0)',
 };
 
 export const fontsDesktop = {
