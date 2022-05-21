@@ -24,7 +24,7 @@ align-items: center;
 
 function GyroscopeDashboard() {
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'gyroscope/');
+  const starCountRef = ref(dbRT, 'sensorSet_A1/gyroscope');
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
