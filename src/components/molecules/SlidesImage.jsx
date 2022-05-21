@@ -5,10 +5,10 @@ import styled, { css } from 'styled-components';
 import { colors } from '../../css/globalStyles';
 
 const SlideWrapper = styled.div`
-background-color: red;
-position: relative;
-width: 100vw;
+width:70%;
 height: auto;
+display: flex;
+justify-content: center;
 `;
 
 const ImageBox = styled.div`
@@ -19,7 +19,8 @@ justify-content: center;
 img {
   width: 100%;
   height: auto;
-  background-color: rgba(136, 136, 136, 0.6);
+  border-radius: 30% 10%;
+  box-shadow: 10px 5px 5px ${colors.backgroundOrange};
 }
 `;
 
@@ -28,7 +29,7 @@ const NavButton = styled.button`
   position: absolute;
   top: 45%;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   border: none;
   background: rgba(255, 255, 255, 0.7);
   width: 60px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../../css/globalStyles';
 
 export const NavLinkStyled = styled(NavLink)`
-  magin: 0;
+  margin: 0;
   padding: 10px;
   text-decoration: none;
   font-weight: bold;

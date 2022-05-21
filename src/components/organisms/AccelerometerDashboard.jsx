@@ -33,15 +33,6 @@ function AccelerometerDashboard() {
       const data = snapshot.val();
       dispatch(saveDataAccel(data));
     });
-    // onSnapshot(doc(db, 'sensorSet', 'set_A1'), (doc) => {;
-    //   const data = {
-    //     x: doc.data().accelerometer.coords[0].x,
-    //     y: doc.data().accelerometer.coords[0].y,
-    //     z: doc.data().accelerometer.coords[0].z,
-    //     createTime: doc.data().accelerometer.sampleTime[0],
-    //   };
-    //   dispatch(saveDataAccel(data));
-    // });
   });
   return (
     <div>
