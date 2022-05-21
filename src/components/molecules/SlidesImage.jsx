@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../css/globalStyles';
+import leftArrow from '../../figures/left_arrow_nav_icon.svg';
+import rightArrow from '../../figures/right_arrow_nav_icon.svg';
 
 const SlideWrapper = styled.div`
-width:70%;
+width:80%;
 height: auto;
-display: flex;
+display: inline-flex;
 justify-content: center;
+align-items: center;
 `;
 
 const ImageBox = styled.div`
@@ -26,14 +29,13 @@ img {
 
 const NavButton = styled.button`
   cursor: pointer;
-  position: absolute;
-  top: 45%;
-  padding: 5px;
+  padding: 0px;
+  margin: 10px;
   border-radius: 5px;
   border: none;
   background: rgba(255, 255, 255, 0.7);
-  width: 60px;
-  height: 50px;
+  width: 80px;
+  height: auto;
 
   ${({ position }) => position === 'left'
     && css`
@@ -66,11 +68,15 @@ function SlidesImage(props) {
 
   return (
     <SlideWrapper>
+        <NavButton onClick={moveTo(activeIndex - 1)}>
+          <img src={leftArrow}/>
+        </NavButton>
       <ImageBox>
         <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
-        <NavButton position="left" onClick={moveTo(activeIndex - 1)}/>
-        <NavButton position="right" onClick={moveTo(activeIndex + 1)}/>
       </ImageBox>
+        <NavButton  onClick={moveTo(activeIndex + 1)}>
+          <img src={rightArrow}/>
+        </NavButton>
     </SlideWrapper>
   );
 }
