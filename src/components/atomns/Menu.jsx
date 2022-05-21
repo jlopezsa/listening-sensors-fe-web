@@ -23,6 +23,8 @@ function Menu() {
           <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled>
           <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
           <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_HOME}> Sign Up </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_HOME}> Login </NavLinkStyled>
         </Ul>
       </Nav>
     </div>
