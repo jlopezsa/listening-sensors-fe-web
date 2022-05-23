@@ -1,45 +1,47 @@
 /* eslint-disable */
 import React from 'react';
 import { useTable } from 'react-table';
-import { Table, TH } from '../atomns/TableComponent';
+import { Table, TH, TD } from '../atomns/TableComponent';
+import { NavLinkStyledDark } from '../atomns/NavLinkStyledDark';
+import {
+  ROUTE_SIGNUP,
+} from '../../routes/routes';
 
 function DevicesList() {
   const lastActivityData = new Date();
   const createData = new Date();
-  const data = React.useMemo(
-    () => [
-      {
-        col1: 'Conjunto sensores A1',
-        col2: [
-          `Latitude_${4.456467854} `,
-          `Longitude_${-74.456467854}`,
-        ],
-        col3: createData.toString(),
-        col4: lastActivityData.toString(),
-        col5: [
-          'Accelerometer ',
-          'Gyroscope ',
-          'Magnetometro ',
-        ],
-        col6: 'Eliminar',
-      },
-      {
-        col1: 'Conjunto sensores A2',
-        col2: [
-          `Latitude_${3.456467854} `,
-          `Longitude_${-70.456467854}`,
-        ],
-        col3: createData.toString(),
-        col4: lastActivityData.toString(),
-        col5: [
-          'Accelerometer ',
-          'Gyroscope ',
-        ],
-        col6: 'Eliminar',
-      },
-    ],
-    [],
-  );
+
+  const data = [
+    {
+      col1: 'Sensores A1',
+      col2: [
+        `Latitude_${4.456467854} `,
+        `Longitude_${-74.456467854}`,
+      ],
+      col3: createData.toString(),
+      col4: lastActivityData.toString(),
+      col5: [
+        'Accelerometer ',
+        'Gyroscope ',
+        'Magnetometro ',
+      ],
+      col6: 'Eliminar',
+    },
+    {
+      col1: 'Sensores A2',
+      col2: [
+        `Latitude_${3.456467854} `,
+        `Longitude_${-70.456467854}`,
+      ],
+      col3: createData.toString(),
+      col4: lastActivityData.toString(),
+      col5: [
+        'Accelerometer ',
+        'Gyroscope ',
+      ],
+      col6: 'Eliminar',
+    },
+  ];
 
   const columns = React.useMemo(
     () => [
@@ -80,14 +82,12 @@ function DevicesList() {
   } = useTable({ columns, data });
 
   return (
-    <Table {...getTableProps()} >
+    <Table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <TH
-                {...column.getHeaderProps()}
-              >
+              <TH {...column.getHeaderProps()}>
                 {column.render('Header')}
               </TH>
             ))}
@@ -99,17 +99,10 @@ function DevicesList() {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => (
-                <td
-                  {...cell.getCellProps()}
-                  style={{
-                    padding: '20px',
-                    border: 'solid 1px gray',
-                    background: 'white',
-                  }}
-                >
-                  {cell.render('Cell')}
-                </td>
+              {row.cells.map((cell, idx) => (
+                <TD {...cell.getCellProps()}>
+                  {idx === 0 ? <NavLinkStyledDark to={ROUTE_SIGNUP}>{cell.render('Cell')}</NavLinkStyledDark> : cell.render('Cell')}
+                </TD>
               ))}
             </tr>
           );

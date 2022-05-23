@@ -12,4 +12,11 @@ background: ${colors.backgroundDark};
 color: ${colors.mainTextLight};
 /* font-weight: bold; */
 width: 200px;
+height: 70px;
+`;
+
+export const TD = styled.td`
+padding: 20px;
+border: solid 1px ${colors.backgroundDark};
+background: white;
 `;
