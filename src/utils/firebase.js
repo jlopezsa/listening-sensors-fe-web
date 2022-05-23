@@ -2,7 +2,11 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import { getFirestore } from 'firebase/firestore';
+import {
+  doc,
+  getFirestore,
+  setDoc,
+} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -34,10 +38,18 @@ function getAccelerometerData() {
   return accelerometerData;
 }
 
+async function setDocument(collectionName, data) {
+  // const docRef = await addDoc(collection(db, collectionName), data);
+  await setDoc(doc(db, collectionName, data.id), data);
+  // const docSnap = await getDoc(docRef);
+  // return { id: docRef.id, ...docSnap.data()};
+}
+
 export {
   app,
   analytics,
   dbRT,
   db,
   getAccelerometerData,
+  setDocument,
 };

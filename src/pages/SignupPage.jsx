@@ -1,45 +1,20 @@
-/* eslint-disable */
-import { useState } from 'react';
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-} from 'firebase/auth';
-import { Button } from '../components/atomns/Button';
+import styled from 'styled-components';
+import FormCreateAccount from '../components/molecules/FormCreateAccount';
 
-const auth = getAuth();
+const ContainerSignup = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
 function SignupPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const handleClick = () => {
-    console.log('Handle Click');
-  };
-
-  const handleCreateAccount = async () => {
-    const email = 'jlopezsa@gmail.com';
-    const password = '123456';
-    try {
-      const userCredential = createUserWithEmailAndPassword(auth, email, password)
-      console.log('FLAG-01: ', userCredential);
-      const user = userCredential.user;
-      console.log('FLAG-02: ', user);
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('ERROR: ', errorCode, errorMessage);
-    }
-
-  }
-
-  const handleLogin = async () => {
-
-  }
-
   return (
-    <div>
+    <ContainerSignup>
       <h1>
         Signup
       </h1>
-      <Button onClick={handleCreateAccount}>Crear cuenta</Button>
-    </div>
+      <FormCreateAccount />
+    </ContainerSignup>
   );
 }
 
