@@ -79,11 +79,39 @@ function FormLoginAccount() {
       );
       // Signed in
       setUserLogin(userCredential.user);
-      console.log('USER_LOGIN: ', userCredential.user);
+      Swal.fire({
+        icon: 'success',
+        title: 'Login exitoso',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate(ROUTE_DASHBOARD);
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+      switch (error.code) {
+        case 'auth/invalid-email':
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'La sintaxis del email no es valida, verifica nuevamente!',
+          });
+          break;
+        case 'auth/wrong-password':
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Tu e-mail o password están incorrectos, intenta nuevamente!',
+          });
+          break;
+        case 'auth/user-not-found':
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'El e-mail ingresado no está registrado, crea una cuenta!',
+          });
+          break;
+        default:
+          break;
+      }
     }
   };
   return (
