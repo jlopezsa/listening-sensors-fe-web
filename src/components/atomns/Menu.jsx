@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {
   ROUTE_HOME,
   ROUTE_DASHBOARD,
+  ROUTE_LOGIN,
+  ROUTE_SIGNUP,
 } from '../../routes/routes';
 import { NavLinkStyled } from './NavLinkStyled';
 
@@ -23,6 +25,8 @@ function Menu() {
           <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled>
           <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
           <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled>
         </Ul>
       </Nav>
     </div>
