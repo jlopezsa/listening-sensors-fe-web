@@ -3,6 +3,7 @@ import {
   SAVE_DATA_GYROS_SENSOR,
   CALCULATE_SPEED_ACCEL,
   SAVE_DATA_MAGNE_SENSOR,
+  SAVE_DATA_USER_LOGED,
 } from './types';
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
     speedY: 0,
     speedZ: 0,
   },
+  userLogin: {},
 };
 
 // eslint-disable-next-line default-param-last
@@ -64,6 +66,11 @@ function reducer(state = initialState, action) {
           dataY: action.payload.y,
           dataZ: action.payload.z,
         },
+      };
+    case SAVE_DATA_USER_LOGED:
+      return {
+        ...state,
+        userLogin: action.payload,
       };
     case CALCULATE_SPEED_ACCEL:
       return {

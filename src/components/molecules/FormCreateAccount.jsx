@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import {
   createUserWithEmailAndPassword,
@@ -8,6 +9,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { saveUserLoged } from '../../store/actions';
 import { setDocument } from '../../utils/firebase';
 import {
   ROUTE_LOGIN,
@@ -20,7 +22,7 @@ import SocialNetwork from '../atomns/SocialNetworks';
 import iconFacebook from '../../figures/facebook_icon_square.svg';
 
 // Styled components
-const ContainerFormSignup = styled.div`
+export const ContainerFormSignupLogin = styled.div`
 text-align: center;
 width: 350px;
 margin: 0px;
@@ -31,9 +33,10 @@ const auth = getAuth();
 const provider = new FacebookAuthProvider();
 
 function FormCreateAccount() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [user, setUser] = useState(null);
+  const [, setUserLogin] = useState(null);
   const [userData, setUserData] = useState({
     userName: '',
     userEmail: '',
@@ -52,15 +55,13 @@ function FormCreateAccount() {
     try {
       // eslint-disable-next-line max-len
       const userCredential = await createUserWithEmailAndPassword(auth, userData.userEmail, userData.userPassword);
-      console.log('FLAG-00: ', userCredential);
-
       Swal.fire(
         'Registro exitoso ',
         'Ingresa tus datos para entrar a la plataforma!',
         'success',
       );
 
-      // setUser(userCredential.user);
+      // setUserLogin(userCredential.user);
 
       await setDocument('users', {
         id: userCredential.user.uid,
@@ -103,8 +104,8 @@ function FormCreateAccount() {
       const result = await signInWithPopup(auth, provider);
       // The signed-in user info.
       const { user } = result;
-      console.log('USERINFO: ', result);
-      // setUser(userInfo);
+      setUserLogin(user);
+      dispatch(saveUserLoged(user));
       await setDocument('users', {
         id: user.uid,
         name: user.displayName,
@@ -120,26 +121,23 @@ function FormCreateAccount() {
       );
       navigate(ROUTE_DASHBOARD);
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      console.log('credential', credential);
-      const { accessToken } = credential;
-      console.log('accessToken', accessToken);
+      // const credential = FacebookAuthProvider.credentialFromResult(result);
+      // const { accessToken } = credential;
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Algo salió mal',
         text: 'No fue posible acceder a tu cuenta Facebook',
       });
-      console.log('error', error);
     }
   };
 
   return (
-    <ContainerFormSignup>
+    <ContainerFormSignupLogin>
       <form action="">
         <Input onChange={handleChange} type="text" name="userName" placeholder="Ingrese nombre" />
         <Input onChange={handleChange} type="email" name="userEmail" placeholder="Ingrese e-mail" />
-        <Input onChange={handleChange} type="password" name="userPassword" placeholder="Ingrese password" />
+        <Input onChange={handleChange} type="password" autoComplete="off" name="userPassword" placeholder="Ingrese password" />
         <h5>
           Ya tienes cuenta?
           <NavLinkStyledDark to={ROUTE_LOGIN}> Ingresa a traves del login! </NavLinkStyledDark>
@@ -151,7 +149,7 @@ function FormCreateAccount() {
       <Button onClick={handleLoginWithFacebook}>
         <SocialNetwork imageSocial={iconFacebook} />
       </Button>
-    </ContainerFormSignup>
+    </ContainerFormSignupLogin>
   );
 }
 
