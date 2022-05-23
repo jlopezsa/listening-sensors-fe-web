@@ -3,6 +3,7 @@ import {
   SAVE_DATA_GYROS_SENSOR,
   CALCULATE_SPEED_ACCEL,
   SAVE_DATA_MAGNE_SENSOR,
+  SAVE_DATA_USER_LOGED,
 } from './types';
 
 export const saveDataAccel = (dataAccel) => ({
@@ -23,4 +24,9 @@ export const saveDataMagne = (dataMagne) => ({
 export const speedCalculate = (dataAccel) => ({
   type: CALCULATE_SPEED_ACCEL,
   payload: dataAccel,
+});
+
+export const saveUserLoged = (userData) => ({
+  type: SAVE_DATA_USER_LOGED,
+  payload: userData,
 });

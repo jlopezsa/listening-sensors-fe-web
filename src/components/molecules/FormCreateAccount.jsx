@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import {
   createUserWithEmailAndPassword,
@@ -8,6 +9,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { saveUserLoged } from '../../store/actions';
 import { setDocument } from '../../utils/firebase';
 import {
   ROUTE_LOGIN,
@@ -31,9 +33,10 @@ const auth = getAuth();
 const provider = new FacebookAuthProvider();
 
 function FormCreateAccount() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [user, setUser] = useState(null);
+  const [, setUserLogin] = useState(null);
   const [userData, setUserData] = useState({
     userName: '',
     userEmail: '',
@@ -58,7 +61,7 @@ function FormCreateAccount() {
         'success',
       );
 
-      // setUser(userCredential.user);
+      // setUserLogin(userCredential.user);
 
       await setDocument('users', {
         id: userCredential.user.uid,
@@ -101,7 +104,8 @@ function FormCreateAccount() {
       const result = await signInWithPopup(auth, provider);
       // The signed-in user info.
       const { user } = result;
-      // setUser(userInfo);
+      setUserLogin(user);
+      dispatch(saveUserLoged(user));
       await setDocument('users', {
         id: user.uid,
         name: user.displayName,

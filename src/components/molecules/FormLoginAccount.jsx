@@ -7,6 +7,8 @@ import {
 } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { saveUserLoged } from '../../store/actions';
 import { ContainerFormSignupLogin } from './FormCreateAccount';
 import { Button } from '../atomns/Button';
 import { Input } from '../atomns/Input';
@@ -23,19 +25,19 @@ const auth = getAuth();
 const provider = new FacebookAuthProvider();
 
 function FormLoginAccount() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     userEmail: '',
     userPassword: '',
   });
-  const [, setUserLogin] = useState(null);
 
   const handleLoginWithFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       // The signed-in user info.
       const { user } = result;
-      // setUser(userInfo);
+      dispatch(saveUserLoged(user));
       await setDocument('users', {
         id: user.uid,
         name: user.displayName,
@@ -44,11 +46,12 @@ function FormLoginAccount() {
         role: 'user',
       });
 
-      Swal.fire(
-        'Login exitoso ',
-        'Ya puedes acceder a los recursos de la plataforma!',
-        'success',
-      );
+      Swal.fire({
+        icon: 'success',
+        title: 'Login exitoso',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate(ROUTE_DASHBOARD);
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       // const credential = FacebookAuthProvider.credentialFromResult(result);
@@ -78,7 +81,7 @@ function FormLoginAccount() {
         userData.userPassword,
       );
       // Signed in
-      setUserLogin(userCredential.user);
+      dispatch(saveUserLoged(userCredential.user));
       Swal.fire({
         icon: 'success',
         title: 'Login exitoso',
