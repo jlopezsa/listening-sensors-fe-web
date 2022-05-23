@@ -1,8 +1,13 @@
+// import styled from 'styled-components';
+import FormLoginAccount from '../components/molecules/FormLoginAccount';
+import { ContainerForm } from './SignupPage';
+
 function LoiginPage() {
   return (
-    <div>
+    <ContainerForm>
       <h1>Login</h1>
-    </div>
+      <FormLoginAccount />
+    </ContainerForm>
   );
 }
 

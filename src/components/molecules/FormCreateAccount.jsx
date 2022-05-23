@@ -20,7 +20,7 @@ import SocialNetwork from '../atomns/SocialNetworks';
 import iconFacebook from '../../figures/facebook_icon_square.svg';
 
 // Styled components
-const ContainerFormSignup = styled.div`
+export const ContainerFormSignupLogin = styled.div`
 text-align: center;
 width: 350px;
 margin: 0px;
@@ -129,11 +129,11 @@ function FormCreateAccount() {
   };
 
   return (
-    <ContainerFormSignup>
+    <ContainerFormSignupLogin>
       <form action="">
         <Input onChange={handleChange} type="text" name="userName" placeholder="Ingrese nombre" />
         <Input onChange={handleChange} type="email" name="userEmail" placeholder="Ingrese e-mail" />
-        <Input onChange={handleChange} type="password" name="userPassword" placeholder="Ingrese password" />
+        <Input onChange={handleChange} type="password" autoComplete="off" name="userPassword" placeholder="Ingrese password" />
         <h5>
           Ya tienes cuenta?
           <NavLinkStyledDark to={ROUTE_LOGIN}> Ingresa a traves del login! </NavLinkStyledDark>
@@ -145,7 +145,7 @@ function FormCreateAccount() {
       <Button onClick={handleLoginWithFacebook}>
         <SocialNetwork imageSocial={iconFacebook} />
       </Button>
-    </ContainerFormSignup>
+    </ContainerFormSignupLogin>
   );
 }
 
