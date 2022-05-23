@@ -52,8 +52,6 @@ function FormCreateAccount() {
     try {
       // eslint-disable-next-line max-len
       const userCredential = await createUserWithEmailAndPassword(auth, userData.userEmail, userData.userPassword);
-      console.log('FLAG-00: ', userCredential);
-
       Swal.fire(
         'Registro exitoso ',
         'Ingresa tus datos para entrar a la plataforma!',
@@ -103,7 +101,6 @@ function FormCreateAccount() {
       const result = await signInWithPopup(auth, provider);
       // The signed-in user info.
       const { user } = result;
-      console.log('USERINFO: ', result);
       // setUser(userInfo);
       await setDocument('users', {
         id: user.uid,
@@ -120,17 +117,14 @@ function FormCreateAccount() {
       );
       navigate(ROUTE_DASHBOARD);
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      console.log('credential', credential);
-      const { accessToken } = credential;
-      console.log('accessToken', accessToken);
+      // const credential = FacebookAuthProvider.credentialFromResult(result);
+      // const { accessToken } = credential;
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Algo salió mal',
         text: 'No fue posible acceder a tu cuenta Facebook',
       });
-      console.log('error', error);
     }
   };
 
