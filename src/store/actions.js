@@ -5,6 +5,7 @@ import {
   SAVE_DATA_MAGNE_SENSOR,
   SAVE_DATA_USER_LOGED,
   SAVE_COLLECTIONS,
+  SAVE_SENSOR_SET_CHOOSED,
 } from './types';
 
 export const saveDataAccel = (dataAccel) => ({
@@ -35,4 +36,9 @@ export const saveUserLoged = (userData) => ({
 export const saveCollection = (collectionData) => ({
   type: SAVE_COLLECTIONS,
   payload: collectionData,
+});
+
+export const saveSensorChoosed = (sensorChoosedData) => ({
+  type: SAVE_SENSOR_SET_CHOOSED,
+  payload: sensorChoosedData,
 });
