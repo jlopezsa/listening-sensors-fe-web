@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable } from 'react-table';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Table, TH, TD } from '../atomns/TableComponent';
 import { NavLinkStyledDark } from '../atomns/NavLinkStyledDark';
-import { saveSensorChoosed } from '../../store/actions';
+import { saveSensorChoosed, saveCollectionName } from '../../store/actions';
 import {
   ROUTE_SINGLE_DASHBOARD,
 } from '../../routes/routes';
@@ -82,9 +82,14 @@ function DevicesList() {
   } = useTable({ columns, data });
 
   function collecionToStore(idx) {
+    dispatch(saveCollectionName(keysCollection[idx]));
     dispatch(saveSensorChoosed(collectionsData[keysCollection[idx]]));
     navigate('/singlesetsensor');
   }
+
+  useEffect(() => {
+  }, []);
+
   return (
     <Table {...getTableProps()}>
       <thead>

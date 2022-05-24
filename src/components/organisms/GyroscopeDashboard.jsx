@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { dbRT } from '../../utils/firebase';
 import { saveDataGyros } from '../../store/actions';
@@ -23,8 +23,9 @@ align-items: center;
 `;
 
 function GyroscopeDashboard() {
+  const nameCollection = useSelector((state) => state.collectionName);
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'sensorSet_A1/gyroscope');
+  const starCountRef = ref(dbRT, `${nameCollection}/gyroscope`);
 
   useEffect(() => {
     onValue(starCountRef, (snapshot) => {
