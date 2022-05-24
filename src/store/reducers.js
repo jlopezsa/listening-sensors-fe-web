@@ -4,6 +4,7 @@ import {
   CALCULATE_SPEED_ACCEL,
   SAVE_DATA_MAGNE_SENSOR,
   SAVE_DATA_USER_LOGED,
+  SAVE_COLLECTIONS,
 } from './types';
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
     speedZ: 0,
   },
   userLogin: {},
+  collectionsData: {},
 };
 
 // eslint-disable-next-line default-param-last
@@ -71,6 +73,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         userLogin: action.payload,
+      };
+    case SAVE_COLLECTIONS:
+      return {
+        ...state,
+        collectionsData: action.payload,
       };
     case CALCULATE_SPEED_ACCEL:
       return {
