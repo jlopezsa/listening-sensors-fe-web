@@ -28,10 +28,13 @@ function AccelerometerDashboard() {
   const starCountRef = ref(dbRT, `${nameCollection}/accelerometer`);
 
   useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
+    const unsubscribe = onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       dispatch(saveDataAccel(data));
     });
+    return () => {
+      unsubscribe();
+    };
   });
   return (
     <div>

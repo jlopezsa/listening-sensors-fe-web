@@ -28,10 +28,13 @@ function MagnetometerDashboard() {
   const starCountRef = ref(dbRT, `${nameCollection}/magnetometer`);
 
   useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
+    const unsubscribe = onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       dispatch(saveDataMagne(data));
     });
+    return () => {
+      unsubscribe();
+    };
   });
   return (
     <div>

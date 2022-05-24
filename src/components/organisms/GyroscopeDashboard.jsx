@@ -28,10 +28,13 @@ function GyroscopeDashboard() {
   const starCountRef = ref(dbRT, `${nameCollection}/gyroscope`);
 
   useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
+    const unsubscribe = onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       dispatch(saveDataGyros(data));
     });
+    return () => {
+      unsubscribe();
+    };
   });
   return (
     <div>
