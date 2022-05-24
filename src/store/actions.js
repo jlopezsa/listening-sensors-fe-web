@@ -4,6 +4,7 @@ import {
   CALCULATE_SPEED_ACCEL,
   SAVE_DATA_MAGNE_SENSOR,
   SAVE_DATA_USER_LOGED,
+  SAVE_COLLECTIONS,
 } from './types';
 
 export const saveDataAccel = (dataAccel) => ({
@@ -29,4 +30,9 @@ export const speedCalculate = (dataAccel) => ({
 export const saveUserLoged = (userData) => ({
   type: SAVE_DATA_USER_LOGED,
   payload: userData,
+});
+
+export const saveCollection = (collectionData) => ({
+  type: SAVE_COLLECTIONS,
+  payload: collectionData,
 });

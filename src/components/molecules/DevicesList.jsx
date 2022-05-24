@@ -1,6 +1,7 @@
-/* eslint-disable */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useTable } from 'react-table';
+import { useSelector } from 'react-redux';
 import { Table, TH, TD } from '../atomns/TableComponent';
 import { NavLinkStyledDark } from '../atomns/NavLinkStyledDark';
 import {
@@ -8,50 +9,45 @@ import {
 } from '../../routes/routes';
 
 function DevicesList() {
+  const collectionsData = useSelector((state) => (state.collectionsData));
+  const data = [];
   const lastActivityData = new Date();
-  const createData = new Date();
 
-  const data = [
-    {
-      col1: 'Sensores A1',
+  const keysCollection = Object.keys(collectionsData);
+
+  keysCollection.map((item, indx) => {
+    const copyCollection = { ...collectionsData[item] };
+    delete copyCollection.name;
+    delete copyCollection.location;
+    delete copyCollection.createTime;
+    const keysCopyCollecton = Object.keys(copyCollection);
+    const createData = new Date(collectionsData[item].createTime.seconds * 1000);
+    const dataCollection = {
+      col1: collectionsData[item].name,
       col2: [
-        `Latitude_${4.456467854} `,
-        `Longitude_${-74.456467854}`,
+        `Latitude:${collectionsData[item].location.latitude} `,
+        `Longitude:${collectionsData[item].location.longitude}`,
       ],
-      col3: createData.toString(),
-      col4: lastActivityData.toString(),
+      col3: lastActivityData.toString(),
+      col4: createData.toString(),
       col5: [
-        'Accelerometer ',
-        'Gyroscope ',
-        'Magnetometro ',
+        keysCopyCollecton.map((itemKey) => `${itemKey} `),
       ],
       col6: 'Eliminar',
-    },
-    {
-      col1: 'Sensores A2',
-      col2: [
-        `Latitude_${3.456467854} `,
-        `Longitude_${-70.456467854}`,
-      ],
-      col3: createData.toString(),
-      col4: lastActivityData.toString(),
-      col5: [
-        'Accelerometer ',
-        'Gyroscope ',
-      ],
-      col6: 'Eliminar',
-    },
-  ];
+    };
+    data[indx] = dataCollection;
+    return data;
+  });
 
   const columns = React.useMemo(
     () => [
       {
         Header: 'Nombre',
-        accessor: 'col1', // accessor is the "key" in the data
+        accessor: 'col1',
       },
       {
         Header: 'Uicación',
-        accessor: 'col2', // accessor is the "key" in the data
+        accessor: 'col2',
       },
       {
         Header: 'Última actividad',
