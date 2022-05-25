@@ -1,6 +1,7 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import dataFig from '../components/atomns/DataFigures';
+import slideItems from '../components/atomns/DataFigures';
 import SlidesImage from '../components/molecules/SlidesImage';
 import { colors } from '../css/globalStyles';
 import { getImafFromFirebase } from '../utils/firebase';
@@ -15,6 +16,15 @@ justify-content: center;
 
 function HomePage() {
   const [urlImage, setUrlImage] = useState('');
+  // const [dataFig] = useState(async () => {
+  //   console.log('INIT-STATE: ', await prenchArray());
+  //   return await prenchArray();
+  // });
+
+  // async function getArrayFig() {
+  //   const teste = await prenchArray();
+  //   setDataFig(teste);
+  // }
 
   useEffect(() => {
     const downloadUrlImage = (async () => {
@@ -26,7 +36,7 @@ function HomePage() {
   return (
     <div>
       <ContainerSlider>
-        <SlidesImage items={dataFig} />
+        <SlidesImage items={slideItems} />
       </ContainerSlider>
       <img alt="" src={urlImage} />
     </div>

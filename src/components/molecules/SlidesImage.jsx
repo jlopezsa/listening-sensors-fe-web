@@ -49,6 +49,7 @@ const NavButton = styled.button`
 `;
 
 function SlidesImage(props) {
+  console.log(props);
   const [{ items, activeIndex }, setState] = useState({
     items: props.items,
     activeIndex: 0
@@ -72,7 +73,7 @@ function SlidesImage(props) {
           <img src={leftArrow}/>
         </NavButton>
       <ImageBox>
-        <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
+        <img alt="" src={!items[activeIndex].caption ? null : items[activeIndex].caption} src={!items[activeIndex].image ? null : items[activeIndex].image} />
       </ImageBox>
         <NavButton  onClick={moveTo(activeIndex + 1)}>
           <img src={rightArrow}/>
