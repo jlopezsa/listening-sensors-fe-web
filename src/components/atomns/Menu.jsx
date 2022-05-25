@@ -1,7 +1,9 @@
+/* eslint-disale */
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAuth, signOut } from 'firebase/auth';
+// import Hamburger from 'hamburger-react';
 import Swal from 'sweetalert2';
 import {
   ROUTE_HOME,
@@ -14,12 +16,33 @@ import { saveUserLoged } from '../../store/actions';
 
 const Nav = styled.nav`
   margin-right: 50px;
-  margin-left: 50px
-  `;
+  margin-left: 50px;
+  display: true;
+  @media (max-width: 690px) {
+    display: none;
+}
+`;
+
 const Ul = styled.ul`
   margin: 0px;
   padding: 0px;
 `;
+
+/* const NavLinkStyledBurger = styled(NavLink)`
+background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &:hover {
+  background-color: #ddd;
+  color: black;
+}
+`; */
+
+/* const II = styled.i`
+
+`; */
 
 const auth = getAuth();
 
@@ -60,6 +83,15 @@ function Menu() {
     }
   };
 
+  /* const myFunction = () => {
+    const x = document.getElementById('myLinks');
+    if (x.style.display === 'block') {
+      x.style.display = 'none';
+    } else {
+      x.style.display = 'block';
+    }
+  }; */
+
   return (
     <div>
       <Nav>
@@ -78,6 +110,10 @@ function Menu() {
             : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
         </Ul>
       </Nav>
+
+      {/* <Nav>
+        <Hamburger color="#4FD1C5" />
+      </Nav> */}
     </div>
   );
 }
