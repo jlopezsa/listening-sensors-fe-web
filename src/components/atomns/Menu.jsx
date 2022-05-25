@@ -1,7 +1,10 @@
+/* eslint-disale */
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAuth, signOut } from 'firebase/auth';
+import Hamburger from 'hamburger-react';
 import Swal from 'sweetalert2';
 import {
   ROUTE_HOME,
@@ -11,14 +14,48 @@ import {
 } from '../../routes/routes';
 import { NavLinkStyled } from './NavLinkStyled';
 import { saveUserLoged } from '../../store/actions';
+import { colors } from '../../css/globalStyles';
 
 const Nav = styled.nav`
   margin-right: 50px;
-  margin-left: 50px
-  `;
+  margin-left: 50px;
+  @media (max-width: 690px) {
+    display: none;
+}
+`;
+
+const NavBurguer = styled.nav`
+  background-color: rgba(44, 62, 80,0.9);
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 1;
+  position: absolute;
+  font-size: 20px;
+  left: 0px;
+  @media (min-width: 690px) {
+    display: none;
+}
+`;
+
+const ContainerBurguer = styled.div`
+display: none;
+margin: 50px;
+@media (max-width: 690px) {
+  display: inline;
+}
+`;
+
 const Ul = styled.ul`
   margin: 0px;
   padding: 0px;
+`;
+
+const UlBurguer = styled.ul`
+position: inline;
+display: flex;
+height: 30px;
+flex-direction: column;
 `;
 
 const auth = getAuth();
@@ -27,6 +64,7 @@ function Menu() {
   const userIsLoged = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -60,6 +98,32 @@ function Menu() {
     }
   };
 
+  const showMenu = () => {
+    setIsOpen(true);
+  };
+  const ocultaMenu = () => {
+    setIsOpen(false);
+  };
+
+  const desplegarMenu = () => (
+    <NavBurguer>
+      <UlBurguer>
+        <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
+        {!userIsLoged
+          ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
+        <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+        {!userIsLoged
+          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
+        {!userIsLoged
+          ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
+        {!userIsLoged
+          ? null
+          : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
+      </UlBurguer>
+    </NavBurguer>
+  );
+
   return (
     <div>
       <Nav>
@@ -78,6 +142,20 @@ function Menu() {
             : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
         </Ul>
       </Nav>
+      <ContainerBurguer>
+        <Hamburger
+          color={colors.backgroundOrange}
+          onToggle={(toggled) => {
+            if (toggled) {
+              showMenu();
+            } else {
+              ocultaMenu();
+              // close a menu
+            }
+          }}
+        />
+      </ContainerBurguer>
+      {isOpen ? desplegarMenu() : null}
     </div>
   );
 }
