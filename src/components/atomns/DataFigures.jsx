@@ -1,13 +1,21 @@
-/* eslint-disable */
-import { storage } from '../../utils/firebase';
 import {
   ref as storageRef,
 } from 'firebase/storage';
-// import figuras1 from '../../figures/iot_figure_1.jpg';
-// import figuras2 from '../../figures/iot_figure_2.jpg';
-// import figuras3 from '../../figures/iot_figure_3.png';
-// import figuras4 from '../../figures/iot_figure_4.jpg';
-import { getImageFromFirebase } from '../../utils/firebase';
+import { storage, getImageFromFirebase } from '../../utils/firebase';
+
+// const imagesFolder = storageRef(storage, '/slides');
+// Find all the prefixes and items.
+// const arrayPath = [];
+// listAll(imagesFolder)
+//   .then((res) => {
+//     res.items.forEach((itemRef) => {
+//       // All the items under listRef.
+//       arrayPath.push(itemRef.fullPath);
+//     });
+//   }).catch((error) => {
+//     console.log('ERROR: ', error);
+//     // Uh-oh, an error occurred!
+//   });
 
 const imagesRef1 = storageRef(storage, 'slides/iot_figure_1.jpg');
 const imagesRef2 = storageRef(storage, 'slides/iot_figure_2.jpg');
