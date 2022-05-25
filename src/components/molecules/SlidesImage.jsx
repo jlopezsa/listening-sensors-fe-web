@@ -1,10 +1,10 @@
 /* eslint-disable */
-// https://nazifbara.com/blog/how-to-make-a-slideshow-gallery-with-reactjs-and-styled-components
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../css/globalStyles';
 import leftArrow from '../../figures/left_arrow_nav_icon.svg';
 import rightArrow from '../../figures/right_arrow_nav_icon.svg';
+import prenchArray from '../atomns/DataFigures';
 
 const SlideWrapper = styled.div`
 width:80%;
@@ -48,10 +48,28 @@ const NavButton = styled.button`
     `}
 `;
 
-function SlidesImage(props) {
+const ImageCaption = styled.span`
+  width: 50%;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  /* top: 200px; */
+  font-size: 2vw;
+  top: 200px;
+  padding: 8px;
+  background: rgba(255, 152, 0, 0.7);
+  border-radius: 10px;
+`;
+
+function SlidesImage() {
   const [{ items, activeIndex }, setState] = useState({
-    items: props.items,
-    activeIndex: 0
+    items: [
+      {
+        caption: '',
+        image: '',
+      },
+    ],
+    activeIndex: 0,
   });
 
   const moveTo = (newIndex) => () => {
@@ -66,17 +84,30 @@ function SlidesImage(props) {
     setState((s) => ({ ...s, activeIndex: newIndex }));
   };
 
+  async function getArray() {
+    const teste = await prenchArray();
+    setState({
+      items: teste,
+      activeIndex: 0,
+    });
+  }
+
+  useEffect(() => {
+    getArray();
+  }, []);
+
   return (
     <SlideWrapper>
-        <NavButton onClick={moveTo(activeIndex - 1)}>
-          <img src={leftArrow}/>
-        </NavButton>
+      <NavButton onClick={moveTo(activeIndex - 1)}>
+        <img src={leftArrow} />
+      </NavButton>
       <ImageBox>
         <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
+        <ImageCaption>{items[activeIndex].caption}</ImageCaption>
       </ImageBox>
-        <NavButton  onClick={moveTo(activeIndex + 1)}>
-          <img src={rightArrow}/>
-        </NavButton>
+      <NavButton onClick={moveTo(activeIndex + 1)}>
+        <img src={rightArrow} />
+      </NavButton>
     </SlideWrapper>
   );
 }

@@ -11,6 +11,11 @@ import {
   getFirestore,
   setDoc,
 } from 'firebase/firestore';
+import {
+  getStorage,
+  getDownloadURL,
+  // ref as storageRef,
+} from 'firebase/storage';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -30,8 +35,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const dbRT = getDatabase();
+const storage = getStorage(app);
 
 const starCountRef = ref(dbRT, 'accelerometer/');
+
 function getAccelerometerData() {
   let accelerometerData = {};
   onValue(starCountRef, (snapshot) => {
@@ -48,11 +55,18 @@ async function setDocument(collectionName, data) {
   // return { id: docRef.id, ...docSnap.data()};
 }
 
+async function getImageFromFirebase(imagesRef) {
+  const downloadURL = await getDownloadURL(imagesRef);
+  return downloadURL;
+}
+
 export {
   app,
   analytics,
   dbRT,
   db,
+  storage,
   getAccelerometerData,
   setDocument,
+  getImageFromFirebase,
 };
