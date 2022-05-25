@@ -48,6 +48,19 @@ const NavButton = styled.button`
     `}
 `;
 
+const ImageCaption = styled.span`
+  width: 50%;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  /* top: 200px; */
+  font-size: 2vw;
+  top: 200px;
+  padding: 8px;
+  background: rgba(255, 152, 0, 0.7);
+  border-radius: 10px;
+`;
+
 function SlidesImage() {
   const [{ items, activeIndex }, setState] = useState({
     items: [
@@ -90,6 +103,7 @@ function SlidesImage() {
       </NavButton>
       <ImageBox>
         <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
+        <ImageCaption>{items[activeIndex].caption}</ImageCaption>
       </ImageBox>
       <NavButton onClick={moveTo(activeIndex + 1)}>
         <img src={rightArrow} />

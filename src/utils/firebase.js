@@ -38,7 +38,7 @@ const dbRT = getDatabase();
 const storage = getStorage(app);
 
 const starCountRef = ref(dbRT, 'accelerometer/');
-// const imagesRef = storageRef(storage, 'slides/iot_figure_2.jpg');
+
 function getAccelerometerData() {
   let accelerometerData = {};
   onValue(starCountRef, (snapshot) => {

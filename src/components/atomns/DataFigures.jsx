@@ -18,9 +18,9 @@ import { storage, getImageFromFirebase } from '../../utils/firebase';
 //   });
 
 const imagesRef1 = storageRef(storage, 'slides/iot_figure_1.jpg');
-const imagesRef2 = storageRef(storage, 'slides/iot_figure_2.jpg');
+const imagesRef2 = storageRef(storage, 'slides/iot_figure_4.jpg');
 const imagesRef3 = storageRef(storage, 'slides/iot_figure_3.png');
-const imagesRef4 = storageRef(storage, 'slides/iot_figure_4.jpg');
+const imagesRef4 = storageRef(storage, 'slides/iot_figure_2.jpg');
 
 async function downloadUrlImage(imagesRef) {
   const url = await getImageFromFirebase(imagesRef);
@@ -31,19 +31,19 @@ async function prenchArray() {
   const slideItems = [
     {
       image: await downloadUrlImage(imagesRef1),
-      caption: 'Nemichi-Jinja, Seki',
+      caption: 'Centralizar varios sensores en la nube',
     },
     {
       image: await downloadUrlImage(imagesRef2),
-      caption: 'Itsukushima Shrine',
+      caption: 'Ver en "tiempo real" la información recolectada por los sensores',
     },
     {
       image: await downloadUrlImage(imagesRef3),
-      caption: 'Itsukushima Shrine',
+      caption: 'Varios usuarios tendrán información de los sensores al mismo tiempo',
     },
     {
       image: await downloadUrlImage(imagesRef4),
-      caption: 'Itsukushima Shrine',
+      caption: '(Más adelante) Recibir información de sensores y enviar comandos a los actuadores',
     },
   ];
   return slideItems;
