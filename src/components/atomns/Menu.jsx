@@ -25,8 +25,14 @@ const Nav = styled.nav`
 `;
 
 const NavBurguer = styled.nav`
-  margin-right: 50px;
-  margin-left: 50px;
+  background-color: rgba(44, 62, 80,0.9);
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 1;
+  position: absolute;
+  font-size: 20px;
+  left: 0px;
   @media (min-width: 690px) {
     display: none;
 }
@@ -43,6 +49,13 @@ margin: 50px;
 const Ul = styled.ul`
   margin: 0px;
   padding: 0px;
+`;
+
+const UlBurguer = styled.ul`
+position: inline;
+display: flex;
+height: 30px;
+flex-direction: column;
 `;
 
 const auth = getAuth();
@@ -85,50 +98,31 @@ function Menu() {
     }
   };
 
-  const desplegarMenu = () => (
-    <NavBurguer>
-      <Ul>
-        <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
-        {!userIsLoged
-          ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-        <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
-        <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
-        {!userIsLoged
-          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
-        {!userIsLoged
-          ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
-        {!userIsLoged
-          ? null
-          : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
-      </Ul>
-    </NavBurguer>
-  );
-
-  const cerrarMenu = () => {
-    <Nav>
-      <Ul>
-        <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
-        {!userIsLoged
-          ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-        <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
-        <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
-        {!userIsLoged
-          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
-        {!userIsLoged
-          ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
-        {!userIsLoged
-          ? null
-          : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
-      </Ul>
-    </Nav>;
-  };
-
   const showMenu = () => {
     setIsOpen(true);
   };
   const ocultaMenu = () => {
     setIsOpen(false);
   };
+
+  const desplegarMenu = () => (
+    <NavBurguer>
+      <UlBurguer>
+        <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
+        {!userIsLoged
+          ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
+        <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+        {!userIsLoged
+          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
+        {!userIsLoged
+          ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
+        {!userIsLoged
+          ? null
+          : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
+      </UlBurguer>
+    </NavBurguer>
+  );
 
   return (
     <div>
@@ -160,8 +154,8 @@ function Menu() {
             }
           }}
         />
-        {isOpen ? desplegarMenu() : cerrarMenu()}
       </ContainerBurguer>
+      {isOpen ? desplegarMenu() : null}
     </div>
   );
 }
