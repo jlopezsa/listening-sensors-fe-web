@@ -1,10 +1,8 @@
-/* eslint-disable */
 import React, { useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
-import { doc, onSnapshot } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { dbRT, db } from '../../utils/firebase';
+import { dbRT } from '../../utils/firebase';
 import { saveDataAccel } from '../../store/actions';
 import XYZgraphic from '../molecules/XYZgraphic';
 import XYZgraphicHistory from '../molecules/XYZgraphicHistory';
@@ -25,14 +23,18 @@ align-items: center;
 `;
 
 function AccelerometerDashboard() {
+  const nameCollection = useSelector((state) => state.collectionName);
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'sensorSet_A1/accelerometer');
+  const starCountRef = ref(dbRT, `${nameCollection}/accelerometer`);
 
   useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
+    const unsubscribe = onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       dispatch(saveDataAccel(data));
     });
+    return () => {
+      unsubscribe();
+    };
   });
   return (
     <div>

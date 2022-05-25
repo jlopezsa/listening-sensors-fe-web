@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { dbRT } from '../../utils/firebase';
 import { saveDataMagne } from '../../store/actions';
@@ -23,14 +23,18 @@ align-items: center;
 `;
 
 function MagnetometerDashboard() {
+  const nameCollection = useSelector((state) => state.collectionName);
   const dispatch = useDispatch();
-  const starCountRef = ref(dbRT, 'sensorSet_A1/magnetometer');
+  const starCountRef = ref(dbRT, `${nameCollection}/magnetometer`);
 
   useEffect(() => {
-    onValue(starCountRef, (snapshot) => {
+    const unsubscribe = onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       dispatch(saveDataMagne(data));
     });
+    return () => {
+      unsubscribe();
+    };
   });
   return (
     <div>

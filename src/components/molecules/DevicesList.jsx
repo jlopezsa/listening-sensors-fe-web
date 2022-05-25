@@ -1,17 +1,21 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable } from 'react-table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Table, TH, TD } from '../atomns/TableComponent';
 import { NavLinkStyledDark } from '../atomns/NavLinkStyledDark';
+import { saveSensorChoosed, saveCollectionName } from '../../store/actions';
 import {
-  ROUTE_SIGNUP,
+  ROUTE_SINGLE_DASHBOARD,
 } from '../../routes/routes';
 
 function DevicesList() {
   const collectionsData = useSelector((state) => (state.collectionsData));
+  const dispatch = useDispatch();
   const data = [];
   const lastActivityData = new Date();
+  const navigate = useNavigate();
 
   const keysCollection = Object.keys(collectionsData);
 
@@ -77,6 +81,15 @@ function DevicesList() {
     prepareRow,
   } = useTable({ columns, data });
 
+  function collecionToStore(idx) {
+    dispatch(saveCollectionName(keysCollection[idx]));
+    dispatch(saveSensorChoosed(collectionsData[keysCollection[idx]]));
+    navigate('/singlesetsensor');
+  }
+
+  useEffect(() => {
+  }, []);
+
   return (
     <Table {...getTableProps()}>
       <thead>
@@ -91,13 +104,13 @@ function DevicesList() {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
+        {rows.map((row, idxRow) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell, idx) => (
+              {row.cells.map((cell, idxCell) => (
                 <TD {...cell.getCellProps()}>
-                  {idx === 0 ? <NavLinkStyledDark to={ROUTE_SIGNUP}>{cell.render('Cell')}</NavLinkStyledDark> : cell.render('Cell')}
+                  {idxCell === 0 ? <NavLinkStyledDark to={ROUTE_SINGLE_DASHBOARD} onClick={() => collecionToStore(idxRow)}>{cell.render('Cell')}</NavLinkStyledDark> : cell.render('Cell')}
                 </TD>
               ))}
             </tr>

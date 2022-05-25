@@ -51,7 +51,7 @@ function XYZgraphicHistoryMagnetometer() {
   const xyzValues = useSelector((state) => (state.dataMagnetometer));
   const { dataX, dataY, dataZ } = xyzValues;
   useEffect(() => {
-    if (historyX.length >= 100) {
+    if (historyX.length >= 50) {
       historyX.shift();
       historyY.shift();
       historyZ.shift();
@@ -65,6 +65,13 @@ function XYZgraphicHistoryMagnetometer() {
     const timeSeconds = tiempo.getSeconds() + (millisec / 1000000);
     labels.push(timeSeconds.toFixed(2));
   });
+
+  useEffect(() => () => {
+    historyX.splice(0, 50);
+    historyY.splice(0, 50);
+    historyZ.splice(0, 50);
+    labels.splice(0, 50);
+  }, []);
 
   const data = {
     labels,
