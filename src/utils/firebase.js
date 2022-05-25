@@ -14,7 +14,7 @@ import {
 import {
   getStorage,
   getDownloadURL,
-  ref as storageRef,
+  // ref as storageRef,
 } from 'firebase/storage';
 
 // Your web app's Firebase configuration
@@ -38,7 +38,7 @@ const dbRT = getDatabase();
 const storage = getStorage(app);
 
 const starCountRef = ref(dbRT, 'accelerometer/');
-const imagesRef = storageRef(storage, 'slides/iot_figure_2.jpg');
+// const imagesRef = storageRef(storage, 'slides/iot_figure_2.jpg');
 function getAccelerometerData() {
   let accelerometerData = {};
   onValue(starCountRef, (snapshot) => {
@@ -55,7 +55,7 @@ async function setDocument(collectionName, data) {
   // return { id: docRef.id, ...docSnap.data()};
 }
 
-async function getImafFromFirebase() {
+async function getImageFromFirebase(imagesRef) {
   const downloadURL = await getDownloadURL(imagesRef);
   return downloadURL;
 }
@@ -65,7 +65,8 @@ export {
   analytics,
   dbRT,
   db,
+  storage,
   getAccelerometerData,
   setDocument,
-  getImafFromFirebase,
+  getImageFromFirebase,
 };

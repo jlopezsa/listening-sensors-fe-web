@@ -1,10 +1,11 @@
 /* eslint-disable */
 // https://nazifbara.com/blog/how-to-make-a-slideshow-gallery-with-reactjs-and-styled-components
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../css/globalStyles';
 import leftArrow from '../../figures/left_arrow_nav_icon.svg';
 import rightArrow from '../../figures/right_arrow_nav_icon.svg';
+import prenchArray from '../atomns/DataFigures';
 
 const SlideWrapper = styled.div`
 width:80%;
@@ -48,11 +49,15 @@ const NavButton = styled.button`
     `}
 `;
 
-function SlidesImage(props) {
-  console.log(props);
+function SlidesImage() {
   const [{ items, activeIndex }, setState] = useState({
-    items: props.items,
-    activeIndex: 0
+      items: [
+        {
+          caption: '',
+          image: '',
+        }
+      ],
+      activeIndex: 0
   });
 
   const moveTo = (newIndex) => () => {
@@ -67,13 +72,25 @@ function SlidesImage(props) {
     setState((s) => ({ ...s, activeIndex: newIndex }));
   };
 
+  async function getArray() {
+    const teste = await prenchArray();
+    setState({
+      items: teste,
+      activeIndex: 0
+    });
+  }
+
+  useEffect( () => {
+    getArray();
+  }, []);
+
   return (
     <SlideWrapper>
         <NavButton onClick={moveTo(activeIndex - 1)}>
           <img src={leftArrow}/>
         </NavButton>
       <ImageBox>
-        <img alt="" src={!items[activeIndex].caption ? null : items[activeIndex].caption} src={!items[activeIndex].image ? null : items[activeIndex].image} />
+        <img alt="" src={items[activeIndex].caption} src={items[activeIndex].image} />
       </ImageBox>
         <NavButton  onClick={moveTo(activeIndex + 1)}>
           <img src={rightArrow}/>
