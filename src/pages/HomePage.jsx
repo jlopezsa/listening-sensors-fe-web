@@ -1,9 +1,14 @@
-// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import slideItems from '../components/atomns/DataFigures';
 import SlidesImage from '../components/molecules/SlidesImage';
-import InformationCard from '../components/molecules/InformationCard';
 import { colors } from '../css/globalStyles';
+import ContentCards from '../components/organisms/ContentCards';
+import InformationBigCard from '../components/molecules/InformationBigCard';
+import InformationBigCardArchitecture from '../components/molecules/InformationBigCardArchitecture';
+import InformationBigCardGrafico from '../components/molecules/InformationBigCardGrafico';
+import figAim from '../figures/listening-sensors.png';
+import figArchitecture from '../figures/architecture.png';
+import figEntornoGrafico from '../figures/entorno-grafico.png';
 // import { getImafFromFirebase } from '../utils/firebase';
 
 const ContainerSlider = styled.div`
@@ -12,6 +17,19 @@ padding-top: 40px;
 padding-bottom: 40px;
 display: flex;
 justify-content: center;
+`;
+
+const ContainerInfo = styled.div`
+display: flex;
+justify-content: center;
+`;
+
+const MainTitle = styled.h1`
+  background-color: ${colors.backgroundDark};
+  margin: 0px;
+  text-align: center;
+  color: ${colors.mainTextHover};
+  font-size: 50px;
 `;
 
 function HomePage() {
@@ -25,10 +43,25 @@ function HomePage() {
   // }, []);
   return (
     <div>
+      <MainTitle>Listening Sensors</MainTitle>
+
       <ContainerSlider>
         <SlidesImage items={slideItems} />
       </ContainerSlider>
-      <InformationCard />
+
+      <ContainerInfo>
+        <InformationBigCard title="Objetivo" figure={figAim} />
+      </ContainerInfo>
+
+      <ContainerInfo>
+        <InformationBigCardGrafico title="Entorno Gráfico" figure={figEntornoGrafico} />
+      </ContainerInfo>
+
+      <ContentCards />
+
+      <ContainerInfo>
+        <InformationBigCardArchitecture title="Arquitectura y herramientas utilizadas" content="" figure={figArchitecture} />
+      </ContainerInfo>
       {/* <img alt="" src={urlImage} /> */}
     </div>
   );

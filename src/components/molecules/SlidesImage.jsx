@@ -7,7 +7,7 @@ import rightArrow from '../../figures/right_arrow_nav_icon.svg';
 import prenchArray from '../atomns/DataFigures';
 
 const SlideWrapper = styled.div`
-width:80%;
+width: 95%;
 height: auto;
 display: inline-flex;
 justify-content: center;
@@ -28,7 +28,6 @@ img {
 `;
 
 const NavButton = styled.button`
-  cursor: pointer;
   padding: 0px;
   margin: 10px;
   border-radius: 5px;
@@ -49,13 +48,13 @@ const NavButton = styled.button`
 `;
 
 const ImageCaption = styled.span`
-  width: 50%;
+  width: 45%;
   text-align: center;
   font-weight: bold;
   position: absolute;
   /* top: 200px; */
   font-size: 2vw;
-  top: 200px;
+  top: 400px;
   padding: 8px;
   background: rgba(255, 152, 0, 0.7);
   border-radius: 10px;
