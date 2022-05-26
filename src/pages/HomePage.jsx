@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import slideItems from '../components/atomns/DataFigures';
 import SlidesImage from '../components/molecules/SlidesImage';
+import InformationCard from '../components/molecules/InformationCard';
 import { colors } from '../css/globalStyles';
 // import { getImafFromFirebase } from '../utils/firebase';
 
@@ -27,6 +28,8 @@ function HomePage() {
       <ContainerSlider>
         <SlidesImage items={slideItems} />
       </ContainerSlider>
+      <InformationCard />
+
       {/* <img alt="" src={urlImage} /> */}
     </div>
   );
