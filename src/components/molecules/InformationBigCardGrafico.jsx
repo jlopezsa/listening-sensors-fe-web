@@ -12,17 +12,18 @@ flex-direction: column;
 margin-top: 50px;
 margin-bottom: 50px;
 flex-wrap: wrap;
+text-align: center;
 `;
 
 
 const ImagBigCard = styled.img`
-  width: 50vw;
+  width: 70vw;
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: center;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 10% 10% 0% 0%;
+  border-radius: 0% 0% 0% 0%;
   `;
 
 const TitleBigCard = styled.h3`
@@ -37,15 +38,18 @@ padding: 10px;
 
 `;
 
-function InformationBigCard(props) {
+function InformationBigCardGrafico(props) {
   const { title, figure } = props;
   return (
     <ContainerBigCard>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>Algo dentro de ...BigCard</ContentBigCard>
+      <ContentBigCard>El aplicativo móvil puede ser descarado en</ContentBigCard>
+      <ContentBigCard>
+        <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop</a>
+      </ContentBigCard>
     </ContainerBigCard>
   );
 }
 
-export default InformationBigCard;
+export default InformationBigCardGrafico;

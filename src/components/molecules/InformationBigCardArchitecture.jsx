@@ -37,15 +37,15 @@ padding: 10px;
 
 `;
 
-function InformationBigCard(props) {
+function InformationBigCardArchitecture(props) {
   const { title, figure } = props;
   return (
     <ContainerBigCard>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>Algo dentro de ...BigCard</ContentBigCard>
+      <ContentBigCard>Algo dentro de ...Architecture</ContentBigCard>
     </ContainerBigCard>
   );
 }
 
-export default InformationBigCard;
+export default InformationBigCardArchitecture;
