@@ -10,13 +10,14 @@ export const TH = styled.th`
 border-bottom: solid 3px ${colors.backgroundOrange};
 background: ${colors.backgroundDark};
 color: ${colors.mainTextLight};
-/* font-weight: bold; */
-width: 200px;
+width: 100vw;
 height: 70px;
+font-size: 1vw;
 `;
 
 export const TD = styled.td`
 padding: 20px;
 border: solid 1px ${colors.backgroundDark};
 background: white;
+font-size: 1vw;
 `;
