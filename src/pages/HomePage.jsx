@@ -1,9 +1,8 @@
-// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import slideItems from '../components/atomns/DataFigures';
 import SlidesImage from '../components/molecules/SlidesImage';
-import InformationCard from '../components/molecules/InformationCard';
 import { colors } from '../css/globalStyles';
+import ContentCards from '../components/organisms/ContentCards';
 // import { getImafFromFirebase } from '../utils/firebase';
 
 const ContainerSlider = styled.div`
@@ -28,7 +27,7 @@ function HomePage() {
       <ContainerSlider>
         <SlidesImage items={slideItems} />
       </ContainerSlider>
-      <InformationCard />
+      <ContentCards />
       {/* <img alt="" src={urlImage} /> */}
     </div>
   );

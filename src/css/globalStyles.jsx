@@ -5,6 +5,7 @@ export const colors = {
   mainTextDark: 'rgb(44, 62, 80)',
   mainTextHover: 'rgb(255, 152, 0)',
   backgroundDark: '#888888',
+  backgroundDarkGray: '#eeeeee',
   backgroundDarkHigh: 'rgb(44, 62, 80)',
   backgroundLight: 'white',
   backgroundOrange: 'rgb(255, 152, 0)',
