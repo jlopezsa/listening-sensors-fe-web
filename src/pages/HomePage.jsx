@@ -36,11 +36,11 @@ function HomePage() {
         <SlidesImage items={slideItems} />
       </ContainerSlider>
       <ContainerInfo>
-        <InformationBigCard title="Lo que se hace como" content="Conexion de sensores" figure={figAim} />
+        <InformationBigCard title="Objetivo" content="Conexion de sensores" figure={figAim} />
       </ContainerInfo>
       <ContentCards />
       <ContainerInfo>
-        <InformationBigCard title="Arquitectura" content="Conexion de sensores" figure={figArchitecture} />
+        <InformationBigCard title="Arquitectura" content="" figure={figArchitecture} />
       </ContainerInfo>
       {/* <img alt="" src={urlImage} /> */}
     </div>
