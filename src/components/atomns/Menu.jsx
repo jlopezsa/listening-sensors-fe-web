@@ -111,8 +111,8 @@ function Menu() {
         <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
         {Object.keys(userIsLoged).length === 0
           ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-        <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
-        <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
         {Object.keys(userIsLoged).length === 0
           ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
         {Object.keys(userIsLoged).length === 0
@@ -131,8 +131,8 @@ function Menu() {
           <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
           {Object.keys(userIsLoged).length === 0
             ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-          <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
-          <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
           {Object.keys(userIsLoged).length === 0
             ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
           {Object.keys(userIsLoged).length === 0

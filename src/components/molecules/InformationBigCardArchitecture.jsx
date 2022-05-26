@@ -43,7 +43,7 @@ function InformationBigCardArchitecture(props) {
     <ContainerBigCard>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>Algo dentro de ...Architecture</ContentBigCard>
+      <ContentBigCard></ContentBigCard>
     </ContainerBigCard>
   );
 }

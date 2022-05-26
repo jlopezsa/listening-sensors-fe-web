@@ -44,7 +44,7 @@ function InformationBigCardGrafico(props) {
     <ContainerBigCard>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>El aplicativo móvil puede ser descarado en</ContentBigCard>
+      <ContentBigCard>El aplicativo móvil (para Android) puede ser descarado en</ContentBigCard>
       <ContentBigCard>
         <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop</a>
       </ContentBigCard>
