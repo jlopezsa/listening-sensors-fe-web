@@ -3,7 +3,7 @@ function InformationCard() {
     <div>
       Imagem
       <h4>Title</h4>
-      <body>Title</body>
+      <h5>Title</h5>
     </div>
   );
 }

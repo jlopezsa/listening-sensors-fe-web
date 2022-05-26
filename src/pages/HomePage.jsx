@@ -29,7 +29,6 @@ function HomePage() {
         <SlidesImage items={slideItems} />
       </ContainerSlider>
       <InformationCard />
-
       {/* <img alt="" src={urlImage} /> */}
     </div>
   );
