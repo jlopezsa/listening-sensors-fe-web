@@ -25,9 +25,9 @@ const firebaseConfig = {
   databaseURL: 'https://listeningsensors.firebaseio.com/',
   projectId: 'listeningsensors',
   storageBucket: 'listeningsensors.appspot.com',
-  messagingSenderId: '634491630956',
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: '1:634491630956:web:f6d37d278e93993c8daf49',
-  measurementId: 'G-E2B396DSM5',
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
