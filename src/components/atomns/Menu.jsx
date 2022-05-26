@@ -84,7 +84,7 @@ function Menu() {
             'Regresa pronto',
             'success',
           );
-          dispatch(saveUserLoged(null));
+          dispatch(saveUserLoged({}));
           await signOut(auth);
           navigate(ROUTE_HOME);
         }
@@ -109,15 +109,15 @@ function Menu() {
     <NavBurguer>
       <UlBurguer>
         <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
-        {!userIsLoged
+        {Object.keys(userIsLoged).length === 0
           ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
         <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
         <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
-        {!userIsLoged
-          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
-        {!userIsLoged
+        {Object.keys(userIsLoged).length === 0
+          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
+        {Object.keys(userIsLoged).length === 0
           ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
-        {!userIsLoged
+        {Object.keys(userIsLoged).length === 0
           ? null
           : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
       </UlBurguer>
@@ -129,15 +129,15 @@ function Menu() {
       <Nav>
         <Ul>
           <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
-          {!userIsLoged
+          {Object.keys(userIsLoged).length === 0
             ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
           <NavLinkStyled to={ROUTE_HOME}> Team </NavLinkStyled>
           <NavLinkStyled to={ROUTE_HOME}> Contact </NavLinkStyled>
-          {!userIsLoged
-            ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null }
-          {!userIsLoged
+          {Object.keys(userIsLoged).length === 0
+            ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
+          {Object.keys(userIsLoged).length === 0
             ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
-          {!userIsLoged
+          {Object.keys(userIsLoged).length === 0
             ? null
             : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
         </Ul>
