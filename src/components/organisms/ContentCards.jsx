@@ -14,6 +14,7 @@ padding: 20px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
+flex-wrap: wrap;
 `;
 function ContentCards() {
   return (
