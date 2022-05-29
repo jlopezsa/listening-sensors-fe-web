@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../../css/globalStyles';
 
 const ContainerBigCard = styled.div`
-width: 70vw;
+width: 90vw;
 height: auto;
 background-color: ${colors.backgroundLight};
 border-radius: 30px;
@@ -17,7 +17,7 @@ text-align: center;
 
 
 const ImagBigCard = styled.img`
-  width: 70vw;
+  width: 90vw;
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: center;
@@ -46,7 +46,7 @@ function InformationBigCardGrafico(props) {
       <ImagBigCard src={figure} alt="title" />
       <ContentBigCard>El aplicativo móvil (para Android) puede ser descarado en</ContentBigCard>
       <ContentBigCard>
-        <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop</a>
+        <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">Link GitHub</a>
       </ContentBigCard>
     </ContainerBigCard>
   );
