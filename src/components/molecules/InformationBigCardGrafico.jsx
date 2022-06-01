@@ -1,6 +1,10 @@
 /* eslint-disable */
 import styled from 'styled-components';
+import { Button } from '../atomns/Button';
+import SocialNetwork from '../atomns/SocialNetworks';
+// import { Link } from 'react-router-dom';
 import { colors } from '../../css/globalStyles';
+import iconGitHub from '../../figures/github_icon.svg';
 
 const ContainerBigCard = styled.div`
 width: 90vw;
@@ -38,15 +42,30 @@ padding: 10px;
 
 `;
 
+const Alink = styled.a`
+text-decoration: none;
+color: ${colors.mainTextLight};
+&:hover{
+  color: ${colors.mainTextDark};
+}
+`;
+
 function InformationBigCardGrafico(props) {
   const { title, figure } = props;
+
   return (
     <ContainerBigCard>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>El aplicativo móvil (para Android) puede ser descarado en</ContentBigCard>
+      <ContentBigCard>El aplicativo móvil (para Android) puede ser descarado en
+      </ContentBigCard>
       <ContentBigCard>
-        <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">Link GitHub</a>
+        <Button>
+          <Alink href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">
+            <SocialNetwork imageSocial={iconGitHub} socialNetwork='GitHub' />
+          </Alink>
+        </Button>
+        {/* <a href="https://github.com/jlopezsa/listening-sensors-fe-mob/tree/develop">Link GitHub</a> */}
       </ContentBigCard>
     </ContainerBigCard>
   );
