@@ -9,6 +9,7 @@ import InformationBigCardGrafico from '../components/molecules/InformationBigCar
 import figAim from '../figures/listening-sensors.png';
 import figArchitecture from '../figures/architecture.png';
 import figEntornoGrafico from '../figures/entorno-grafico.png';
+import Footer from '../components/organisms/Footer';
 // import { getImafFromFirebase } from '../utils/firebase';
 
 const ContainerSlider = styled.div`
@@ -63,6 +64,7 @@ function HomePage() {
         <InformationBigCardArchitecture title="Arquitectura y herramientas utilizadas" content="" figure={figArchitecture} />
       </ContainerInfo>
       {/* <img alt="" src={urlImage} /> */}
+      <Footer />
     </div>
   );
 }
