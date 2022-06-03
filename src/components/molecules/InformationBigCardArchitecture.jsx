@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../../css/globalStyles';
 
 const ContainerBigCard = styled.div`
-width: 70vw;
+width: 90vw;
 height: auto;
 background-color: ${colors.backgroundLight};
 border-radius: 30px;
@@ -16,7 +16,7 @@ flex-wrap: wrap;
 
 
 const ImagBigCard = styled.img`
-  width: 50vw;
+  width: 90vw;
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: center;
@@ -26,13 +26,13 @@ const ImagBigCard = styled.img`
   `;
 
 const TitleBigCard = styled.h3`
-font-size: 50px;
+font-size: 40px;
 color: ${colors.mainTextHover};
 text-align: center;
 `;
 
 const ContentBigCard = styled.p`
-font-size: 30px;
+font-size: 20px;
 padding: 10px;
 
 `;

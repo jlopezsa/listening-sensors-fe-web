@@ -22,11 +22,11 @@ const ImagIcon = styled(SVG)`
   }
 `;
 
-function SocialNetworks({ imageSocial }) {
+function SocialNetworks({ imageSocial, socialNetwork }) {
   return (
     <ContainerSocialNetwork>
       <ImagIcon src={!imageSocial ? iconDefault : imageSocial} alt="title" />
-      <h3>Facebook</h3>
+      <h3>{socialNetwork}</h3>
     </ContainerSocialNetwork>
   );
 }
@@ -34,6 +34,7 @@ function SocialNetworks({ imageSocial }) {
 SocialNetworks.propTypes = {
   // eslint-disable-next-line react/require-default-props
   imageSocial: PropTypes.string,
+  socialNetwork: PropTypes.string.isRequired,
 };
 
 export default SocialNetworks;

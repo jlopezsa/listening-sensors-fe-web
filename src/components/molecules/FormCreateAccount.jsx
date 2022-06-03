@@ -147,7 +147,7 @@ function FormCreateAccount() {
       <hr />
       <h5>También pedes ingresar usando tu red social</h5>
       <Button onClick={handleLoginWithFacebook}>
-        <SocialNetwork imageSocial={iconFacebook} />
+        <SocialNetwork imageSocial={iconFacebook} socialNetwork="Facebook" />
       </Button>
     </ContainerFormSignupLogin>
   );
