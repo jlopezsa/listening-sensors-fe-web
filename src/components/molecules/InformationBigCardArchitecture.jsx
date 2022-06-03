@@ -26,13 +26,13 @@ const ImagBigCard = styled.img`
   `;
 
 const TitleBigCard = styled.h3`
-font-size: 50px;
+font-size: 40px;
 color: ${colors.mainTextHover};
 text-align: center;
 `;
 
 const ContentBigCard = styled.p`
-font-size: 30px;
+font-size: 20px;
 padding: 10px;
 
 `;

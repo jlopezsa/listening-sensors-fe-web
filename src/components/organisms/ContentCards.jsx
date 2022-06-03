@@ -22,7 +22,7 @@ margin-top: 0px;
 
 const TitleBigCard = styled.h3`
 background-color: ${colors.backgroundDarkGray};
-font-size: 50px;
+font-size: 40px;
 color: ${colors.mainTextHover};
 text-align: center;
 margin-bottom: 0px;
