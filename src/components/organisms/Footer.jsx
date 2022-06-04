@@ -16,13 +16,14 @@ justify-content: center;
 const BoldText = styled.p`
 color: ${colors.mainTextLight};
 font-size: 18px;
+text-align: center;
 `;
 
 function Footer() {
   return (
     <ContainerFooter>
       <SocialNetworksGroup />
-      <BoldText> &copy; Julian Jair López Salamanca,   listeningsensors</BoldText>
+      <BoldText> &copy; 2022: Julian Jair López Salamanca, listeningsensors</BoldText>
     </ContainerFooter>
   );
 }
