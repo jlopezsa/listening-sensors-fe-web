@@ -5,4 +5,6 @@ export const ROUTE_LOGIN = '/login';
 export const ROUTE_SIGNUP = '/signup';
 export const ROUTE_SINGLE_DASHBOARD = '/singlesetsensor';
 export const ROUTE_SECTION_OBJECTIVE = '/#objective';
+export const ROUTE_SECTION_METHODOLOGY = '/#methodology';
+export const ROUTE_SECTION_SENSORS = '/#sensors';
 export const ROUTE_SECTION_TECH = '/#tech';

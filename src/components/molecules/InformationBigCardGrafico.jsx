@@ -79,7 +79,7 @@ function InformationBigCardGrafico(props) {
   const { title, figure } = props;
 
   return (
-    <ContainerBigCard>
+    <ContainerBigCard id="methodology">
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
       <ContentBigCard>

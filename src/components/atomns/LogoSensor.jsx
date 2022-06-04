@@ -13,6 +13,9 @@ const ImagSmall = styled(SVG)`
   & path {
     fill: orange;
   }
+  @media (max-width: 950px) {
+    margin-left: 5px;
+}
 `;
 
 function LogoSensor() {
