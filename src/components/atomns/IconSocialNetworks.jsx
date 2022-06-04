@@ -10,8 +10,8 @@ const ImagIcon = styled(SVG)`
   width: 30px;
   background-repeat: no-repeat;
   background-size: 100px 100px;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
   & path {
     fill: ${colors.backgroundLight};
   }

@@ -32,7 +32,7 @@ padding-top: 100px;
 function ContentCards() {
   return (
     <>
-      <TitleBigCard>Los sensores utilizados</TitleBigCard>
+      <TitleBigCard id="sensors">Los sensores utilizados</TitleBigCard>
       <ContainerContentCards>
         <InformationCard title="Acelerometro" content={'Se denomina acelerómetro a cualquier instrumento destinado a medir aceleraciones. Esto no es necesariamente la misma que la aceleración de coordenadas, sino que es el tipo de aceleración asociada con el fenómeno de peso experimentado por una masa de prueba que se encuentra en el marco de referencia del dispositivo [Wikipedia]'} figure={figAccelerometer}/>
         <InformationCard title="Giroscópio" content='El giróscopo o giroscopio es un dispositivo mecánico que sirve para medir, mantener o cambiar la orientación en el espacio de algún aparato o vehículo [Wikipedia]' figure={figGyroscope}/>

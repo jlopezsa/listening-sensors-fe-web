@@ -11,15 +11,19 @@ import {
   ROUTE_DASHBOARD,
   ROUTE_LOGIN,
   ROUTE_SIGNUP,
+  ROUTE_SECTION_OBJECTIVE,
+  ROUTE_SECTION_METHODOLOGY,
+  ROUTE_SECTION_TECH,
+  ROUTE_SECTION_SENSORS,
 } from '../../routes/routes';
-import { NavLinkStyled } from './NavLinkStyled';
+import { HashLinkStyled } from './HashLinkStyled';
 import { saveUserLoged } from '../../store/actions';
 import { colors } from '../../css/globalStyles';
 
 const Nav = styled.nav`
   margin-right: 50px;
   margin-left: 50px;
-  @media (max-width: 690px) {
+  @media (max-width: 950px) {
     display: none;
 }
 `;
@@ -33,7 +37,7 @@ const NavBurguer = styled.nav`
   position: absolute;
   font-size: 20px;
   left: 0px;
-  @media (min-width: 690px) {
+  @media (min-width: 950px) {
     display: none;
 }
 `;
@@ -41,7 +45,7 @@ const NavBurguer = styled.nav`
 const ContainerBurguer = styled.div`
 display: none;
 margin: 50px;
-@media (max-width: 690px) {
+@media (max-width: 950px) {
   display: inline;
 }
 `;
@@ -108,18 +112,20 @@ function Menu() {
   const desplegarMenu = () => (
     <NavBurguer>
       <UlBurguer>
-        <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
+        <HashLinkStyled to={ROUTE_HOME}> Home </HashLinkStyled>
+        <HashLinkStyled to={ROUTE_SECTION_OBJECTIVE}> Objetivo </HashLinkStyled>
+        <HashLinkStyled to={ROUTE_SECTION_METHODOLOGY}> Como-usar? </HashLinkStyled>
+        <HashLinkStyled to={ROUTE_SECTION_SENSORS}> Sensores </HashLinkStyled>
+        <HashLinkStyled to={ROUTE_SECTION_TECH}> Tecnologías </HashLinkStyled>
         {Object.keys(userIsLoged).length === 0
-          ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-        <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
-        <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
+          ? <HashLinkStyled to={ROUTE_SIGNUP}> Sign Up </HashLinkStyled> : null}
         {Object.keys(userIsLoged).length === 0
-          ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
+          ? <HashLinkStyled to={ROUTE_LOGIN}> Login </HashLinkStyled> : null }
         {Object.keys(userIsLoged).length === 0
-          ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
+          ? null : <HashLinkStyled to={ROUTE_DASHBOARD}> Dashboard </HashLinkStyled> }
         {Object.keys(userIsLoged).length === 0
           ? null
-          : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
+          : <HashLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </HashLinkStyled> }
       </UlBurguer>
     </NavBurguer>
   );
@@ -128,18 +134,20 @@ function Menu() {
     <div>
       <Nav>
         <Ul>
-          <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
+          <HashLinkStyled to={ROUTE_HOME}> Home </HashLinkStyled>
+          <HashLinkStyled to={ROUTE_SECTION_OBJECTIVE} strict="true"> Objetivo </HashLinkStyled>
+          <HashLinkStyled to={ROUTE_SECTION_METHODOLOGY}> Como-usar? </HashLinkStyled>
+          <HashLinkStyled to={ROUTE_SECTION_SENSORS}> Sensores </HashLinkStyled>
+          <HashLinkStyled to={ROUTE_SECTION_TECH}> Tecnologías </HashLinkStyled>
           {Object.keys(userIsLoged).length === 0
-            ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-          <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
-          <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
+            ? <HashLinkStyled to={ROUTE_SIGNUP}> Sign Up </HashLinkStyled> : null}
           {Object.keys(userIsLoged).length === 0
-            ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
+            ? <HashLinkStyled to={ROUTE_LOGIN}> Login </HashLinkStyled> : null }
           {Object.keys(userIsLoged).length === 0
-            ? <NavLinkStyled to={ROUTE_LOGIN}> Login </NavLinkStyled> : null }
+            ? null : <HashLinkStyled to={ROUTE_DASHBOARD}> Dashboard </HashLinkStyled> }
           {Object.keys(userIsLoged).length === 0
             ? null
-            : <NavLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </NavLinkStyled> }
+            : <HashLinkStyled to={ROUTE_HOME} onClick={handleClick}> Logout </HashLinkStyled> }
         </Ul>
       </Nav>
       <ContainerBurguer>

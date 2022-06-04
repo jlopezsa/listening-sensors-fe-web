@@ -50,7 +50,7 @@ function DevicesList() {
         accessor: 'col1',
       },
       {
-        Header: 'Uicación',
+        Header: 'Ubicación',
         accessor: 'col2',
       },
       {
