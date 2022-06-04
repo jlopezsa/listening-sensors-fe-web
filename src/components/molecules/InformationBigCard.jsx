@@ -42,7 +42,7 @@ margin-bottom: 20px;
 function InformationBigCard(props) {
   const { title, figure } = props;
   return (
-    <ContainerBigCard>
+    <ContainerBigCard id='objective'>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
       <ContentBigCard>Visualizar de forma online datos recolectados por sensores</ContentBigCard>

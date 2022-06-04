@@ -59,9 +59,8 @@ function HomePage() {
       </ContainerInfo>
 
       <ContentCards />
-
       <ContainerInfo>
-        <InformationBigCardArchitecture title="Arquitectura y herramientas utilizadas" content="" figure={figArchitecture} />
+        <InformationBigCardArchitecture title="Arquitectura y herramientas utilizadas" content="" figure={figArchitecture} id="tech" />
       </ContainerInfo>
       {/* <img alt="" src={urlImage} /> */}
       <Footer />

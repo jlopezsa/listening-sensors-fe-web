@@ -1,7 +1,7 @@
 /* eslint-disale */
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAuth, signOut } from 'firebase/auth';
 import Hamburger from 'hamburger-react';
@@ -11,6 +11,8 @@ import {
   ROUTE_DASHBOARD,
   ROUTE_LOGIN,
   ROUTE_SIGNUP,
+  ROUTE_SECTION_OBJECTIVE,
+  ROUTE_SECTION_TECH,
 } from '../../routes/routes';
 import { NavLinkStyled } from './NavLinkStyled';
 import { saveUserLoged } from '../../store/actions';
@@ -111,8 +113,8 @@ function Menu() {
         <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
         {Object.keys(userIsLoged).length === 0
           ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-        <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
-        <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_SECTION_OBJECTIVE}> Objetivo </NavLinkStyled>
+        <NavLinkStyled to={ROUTE_SECTION_TECH}> Tecnologías </NavLinkStyled>
         {Object.keys(userIsLoged).length === 0
           ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
         {Object.keys(userIsLoged).length === 0
@@ -131,8 +133,8 @@ function Menu() {
           <NavLinkStyled to={ROUTE_HOME}> Home </NavLinkStyled>
           {Object.keys(userIsLoged).length === 0
             ? null : <NavLinkStyled to={ROUTE_DASHBOARD}> Dashboard </NavLinkStyled> }
-          <NavLinkStyled to={ROUTE_HOME}> Objetivo </NavLinkStyled>
-          <NavLinkStyled to={ROUTE_HOME}> Tecnologías </NavLinkStyled>
+          <NavLinkStyled to={ROUTE_SECTION_OBJECTIVE} strict="true"> Objetivo </NavLinkStyled>
+          <Link to="/#tech"> Tecnologías </Link>
           {Object.keys(userIsLoged).length === 0
             ? <NavLinkStyled to={ROUTE_SIGNUP}> Sign Up </NavLinkStyled> : null}
           {Object.keys(userIsLoged).length === 0
