@@ -6,6 +6,7 @@ const ContainerCard = styled.div`
 width: 350px;
 background-color: ${colors.backgroundLight};
 border-radius: 30px;
+margin-bottom: 50px;
 `;
 
 
