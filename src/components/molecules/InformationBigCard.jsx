@@ -9,9 +9,10 @@ background-color: ${colors.backgroundLight};
 border-radius: 30px;
 display: flex;
 flex-direction: column;
-margin-top: 50px;
-margin-bottom: 50px;
+margin-top: 0px;
+margin-bottom: 0px;
 flex-wrap: wrap;
+padding-top: 50px;
 `;
 
 
@@ -36,7 +37,7 @@ font-size: 20px;
 padding: 10px;
 text-align: center;
 margin: 0px;
-margin-bottom: 20px;
+margin-bottom: 10px;
 `;
 
 function InformationBigCard(props) {

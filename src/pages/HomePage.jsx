@@ -31,6 +31,7 @@ const MainTitle = styled.h1`
   text-align: center;
   color: ${colors.mainTextHover};
   font-size: 50px;
+  padding-top: 100px;
 `;
 
 function HomePage() {
@@ -43,7 +44,7 @@ function HomePage() {
   //   downloadUrlImage();
   // }, []);
   return (
-    <div>
+    <div id="top">
       <MainTitle>Listening Sensors</MainTitle>
 
       <ContainerSlider>

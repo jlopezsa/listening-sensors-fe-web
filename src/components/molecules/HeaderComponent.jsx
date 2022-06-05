@@ -13,7 +13,7 @@ export const Header = styled.header`
   z-index: 999;
   align-items: center;
   justify-content: space-between;
-  position: fixed; /* Set the navbar to fixed position */
+  position: fixed; // Set the navbar to fixed position
 `;
 
 function HeaderComponent() {
