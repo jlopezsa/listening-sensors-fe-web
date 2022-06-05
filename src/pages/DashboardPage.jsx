@@ -18,6 +18,11 @@ display: flex;
 flex-direction: column;
 align-items: center;
 `;
+
+const H1 = styled.h1`
+padding-top: 100px;
+`;
+
 function DashboardPage() {
   const dispatch = useDispatch();
 
@@ -40,7 +45,7 @@ function DashboardPage() {
 
   return (
     <DashboardContainer>
-      <h1>Lista de dispositivos</h1>
+      <H1>Lista de dispositivos</H1>
       <DevicesList />
       {/* <AccelerometerDashboard />
       <GyroscopeDashboard />

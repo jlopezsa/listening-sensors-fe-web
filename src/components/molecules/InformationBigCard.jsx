@@ -9,9 +9,10 @@ background-color: ${colors.backgroundLight};
 border-radius: 30px;
 display: flex;
 flex-direction: column;
-margin-top: 50px;
-margin-bottom: 50px;
+margin-top: 0px;
+margin-bottom: 0px;
 flex-wrap: wrap;
+padding-top: 50px;
 `;
 
 
@@ -36,7 +37,7 @@ font-size: 20px;
 padding: 10px;
 text-align: center;
 margin: 0px;
-margin-bottom: 20px;
+margin-bottom: 10px;
 `;
 
 function InformationBigCard(props) {
@@ -45,8 +46,8 @@ function InformationBigCard(props) {
     <ContainerBigCard id='objective'>
       <TitleBigCard>{title}</TitleBigCard>
       <ImagBigCard src={figure} alt="title" />
-      <ContentBigCard>Visualizar de forma online datos recolectados por sensores</ContentBigCard>
-      <ContentBigCard>Observar el comportamiento, a través del tiempo, de los datos recolectados por los sensores</ContentBigCard>
+      <ContentBigCard>Visualizar de forma online datos recolectados por sensores.</ContentBigCard>
+      <ContentBigCard>Observar el comportamiento, a través del tiempo, de los datos recolectados.</ContentBigCard>
       <ContentBigCard>Los sensores utilizados son los disponibles por los smartphone, tale como: acelerometro, giroscópico y magnetómetro.</ContentBigCard>
       <ContentBigCard>Por medio de un aplicativo móvil, cualquier persona podrá registrar su conjunto de sensores para ser monitoreado.</ContentBigCard>
     </ContainerBigCard>

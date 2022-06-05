@@ -54,7 +54,7 @@ const ImageCaption = styled.span`
   position: absolute;
   /* top: 200px; */
   font-size: 2vw;
-  top: 200px;
+  top: 300px;
   padding: 8px;
   background: rgba(255, 152, 0, 0.7);
   border-radius: 10px;

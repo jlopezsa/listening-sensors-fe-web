@@ -8,6 +8,7 @@ import Hamburger from 'hamburger-react';
 import Swal from 'sweetalert2';
 import {
   ROUTE_HOME,
+  ROUTE_HOME_TOP,
   ROUTE_DASHBOARD,
   ROUTE_LOGIN,
   ROUTE_SIGNUP,
@@ -112,7 +113,7 @@ function Menu() {
   const desplegarMenu = () => (
     <NavBurguer>
       <UlBurguer>
-        <HashLinkStyled to={ROUTE_HOME}> Home </HashLinkStyled>
+        <HashLinkStyled to={ROUTE_HOME_TOP}> Home </HashLinkStyled>
         <HashLinkStyled to={ROUTE_SECTION_OBJECTIVE}> Objetivo </HashLinkStyled>
         <HashLinkStyled to={ROUTE_SECTION_METHODOLOGY}> Como-usar? </HashLinkStyled>
         <HashLinkStyled to={ROUTE_SECTION_SENSORS}> Sensores </HashLinkStyled>
@@ -134,7 +135,7 @@ function Menu() {
     <div>
       <Nav>
         <Ul>
-          <HashLinkStyled to={ROUTE_HOME}> Home </HashLinkStyled>
+          <HashLinkStyled to={ROUTE_HOME_TOP}> Home </HashLinkStyled>
           <HashLinkStyled to={ROUTE_SECTION_OBJECTIVE} strict="true"> Objetivo </HashLinkStyled>
           <HashLinkStyled to={ROUTE_SECTION_METHODOLOGY}> Como-usar? </HashLinkStyled>
           <HashLinkStyled to={ROUTE_SECTION_SENSORS}> Sensores </HashLinkStyled>
