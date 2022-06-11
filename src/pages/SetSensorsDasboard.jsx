@@ -5,6 +5,7 @@ import { Button } from '../components/atomns/Button';
 import AccelerometerDashboard from '../components/organisms/AccelerometerDashboard';
 import GyroscopeDashboard from '../components/organisms/GyroscopeDashboard';
 import MagnetometerDashboard from '../components/organisms/MagnetometerDashboard';
+import MapDashboard from '../components/organisms/MapDashboard';
 
 const DashboardContainer = styled.div`
 display: flex;
@@ -25,6 +26,7 @@ function SetSensorsDashboard() {
   const [isAccelerometer, setIsAccelerometer] = useState(false);
   const [isGyroscope, setIsGroscope] = useState(false);
   const [isMagnetometer, setIsMagnetometer] = useState(false);
+  const [isMap, setIsMap] = useState(false);
   const dataSensorChoosed = useSelector((state) => state.sensorSetChoosed);
 
   const handleClickAccel = () => {
@@ -36,6 +38,9 @@ function SetSensorsDashboard() {
   const handleClickMagneto = () => {
     setIsMagnetometer(!isMagnetometer);
   };
+  const handleClickMap = () => {
+    setIsMap(!isMap);
+  };
 
   return (
     <DashboardContainer>
@@ -46,11 +51,13 @@ function SetSensorsDashboard() {
         <Button onClick={handleClickAccel}>Accelerometer</Button>
         <Button onClick={handleClickGyros}>Gyroscope</Button>
         <Button onClick={handleClickMagneto}>Magnetometer</Button>
+        <Button onClick={handleClickMap}>Mapa</Button>
       </ContainerSelectSensors>
 
       {isAccelerometer ? <AccelerometerDashboard /> : <> </> }
       {isGyroscope ? <GyroscopeDashboard /> : <> </> }
       {isMagnetometer ? <MagnetometerDashboard /> : <> </> }
+      {isMap ? <MapDashboard /> : <> </> }
     </DashboardContainer>
   );
 }
