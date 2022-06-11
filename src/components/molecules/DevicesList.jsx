@@ -35,7 +35,7 @@ function DevicesList() {
       col3: lastActivityData.toString(),
       col4: createData.toString(),
       col5: [
-        keysCopyCollecton.map((itemKey) => `${itemKey} `),
+        keysCopyCollecton.map((itemKey) => `${itemKey}\n`),
       ],
       col6: 'Eliminar',
     };

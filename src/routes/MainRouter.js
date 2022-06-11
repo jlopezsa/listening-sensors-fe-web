@@ -8,6 +8,7 @@ import HomePageSectionOjective from '../components/molecules/InformationBigCard'
 import HomePageSectionMethodology from '../components/molecules/InformationBigCardGrafico';
 import HomePageSectionSensors from '../components/organisms/ContentCards';
 import HomePageSectionTech from '../components/molecules/InformationBigCardArchitecture';
+import SetSensorsPage from '../pages/SetSensorsPage';
 
 import {
   ROUTE_HOME,
@@ -19,6 +20,7 @@ import {
   ROUTE_SECTION_METHODOLOGY,
   ROUTE_SECTION_TECH,
   ROUTE_SECTION_SENSORS,
+  ROUTE_SET_SENSORS,
 } from './routes';
 
 function MainRouter() {
@@ -33,6 +35,7 @@ function MainRouter() {
       <Route path={ROUTE_SECTION_METHODOLOGY} element={<HomePageSectionMethodology />} />
       <Route path={ROUTE_SECTION_SENSORS} element={<HomePageSectionSensors />} />
       <Route path={ROUTE_SECTION_TECH} element={<HomePageSectionTech />} />
+      <Route path={ROUTE_SET_SENSORS} element={<SetSensorsPage />} />
     </Routes>
   );
 }

@@ -9,3 +9,4 @@ export const ROUTE_SECTION_OBJECTIVE = '/#objective';
 export const ROUTE_SECTION_METHODOLOGY = '/#methodology';
 export const ROUTE_SECTION_SENSORS = '/#sensors';
 export const ROUTE_SECTION_TECH = '/#tech';
+export const ROUTE_SET_SENSORS = '/set-sensors';
