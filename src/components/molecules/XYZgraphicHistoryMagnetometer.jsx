@@ -35,10 +35,7 @@ const options = {
     },
   },
   scales: {
-    yAxis: {
-      min: -50,
-      max: 50,
-    },
+    yAxis: {},
   },
 };
 
