@@ -1,0 +1,8 @@
+.leaflet-container {
+  background-color: red;
+  width: 600px;
+  height: 600px;
+}
+#map{
+  height: 180px;
+}

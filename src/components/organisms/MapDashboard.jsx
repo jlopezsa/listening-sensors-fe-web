@@ -1,10 +1,17 @@
+import styled from 'styled-components';
+import MapLeaflet from '../molecules/MapLeaflet';
+
+const ContainerMap = styled.div`
+background-color: blue;;
+height: "800px";
+width: "800px";
+`;
+
 function MapDashboard() {
   return (
-    <div>
-      <h1>
-        Here is the map
-      </h1>
-    </div>
+    <ContainerMap>
+      <MapLeaflet />
+    </ContainerMap>
   );
 }
 
