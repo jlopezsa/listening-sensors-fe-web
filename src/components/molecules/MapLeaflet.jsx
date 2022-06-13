@@ -12,26 +12,24 @@ import "../../figures/react-leaflet-icon";
 
 function MapLeaflet() {
   const positionSensor = useSelector((state) => state.sensorSetChoosed);
+  const position = [
+    positionSensor.location.latitude,
+    positionSensor.location.longitude,
+  ];
 
   return (
     <div id="map">
       <MapContainer
         className="leaflet-container"
-        center={[
-          positionSensor.location.latitude,
-          positionSensor.location.longitude,
-        ]}
-        zoom={13}
+        center={position}
+        zoom={8}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
-          position={[
-            positionSensor.location.latitude,
-            positionSensor.location.longitude,
-          ]}
+          position={position}
           icon={
             new Icon({
               iconUrl: markerIconPng,
@@ -41,9 +39,9 @@ function MapLeaflet() {
           }
         >
           <Popup>
-            A pretty CSS3 popup.
+            Name set sensors.
             <br />
-            Easily customizable.
+            {positionSensor.name}
           </Popup>
         </Marker>
       </MapContainer>
